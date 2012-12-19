@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ASE</title>
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <div class="wrapper">
+      <header id="headerEl"></header>
+      
+      
+      <section id="contentEl">
+        
+          <ul>
+            <li><span>December 18, 2012</span> &raquo; <a href="/posts/2012-12-18-backbone-require-resources.html">Reference list of Backbone.JS, Require.JS, and other client-side resources</a></li>
+            <li><span>December 3, 2012</span> &raquo; <a href="/posts/2012-12-03-javascript-code-standards.html">JavaScript code standards (ramblings?) from yours truly</a></li>
+            <li><span>September 12, 2012</span> &raquo; <a href="/posts/2012-09-12-ide-plugins.html">The few IDE plugins worth re-installing</a></li>
+            <li><span>September 7, 2012</span> &raquo; <a href="/posts/2012-09-07-flex-sdk-eclipse.html">Compiling the Flex 4.5 SDK in Eclipse for the brave &amp; patient</a></li>
+            <li><span>June 8, 2012</span> &raquo; <a href="/posts/2012-06-08-bashrc-shortcuts.html">Terminal headache relief from time-saving ~/.bashrc shortcuts</a></li>
+            <li><span>January 7, 2012</span> &raquo; <a href="/posts/2012-01-07-french-language-resources.html">Learn French quickly and on the cheap</a></li>
+            <li><span>October 10, 2011</span> &raquo; <a href="/posts/2011-10-10-ssh-proxy-tunneling.html">Protect your privacy: proxy traffic through ssh</a></li>
+          </ul>
+      
+      </section>
+       
+       
+       
+      <aside id="sideNavEl"></aside>
+      
+      <footer id="footerEl"></footer>
+      
+    </div>
+    
+        
+    <script src="js/scale.fix.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('#headerEl').load('templates/header.html');
+            $('#sideNavEl').load('templates/side-nav.html');
+            $('#footerEl').load('templates/footer.html');
+        
+        });  
+    </script>
+    
+  </body>
+</html>
