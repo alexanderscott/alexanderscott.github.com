@@ -239,15 +239,6 @@ aside ul a:hover{
   color:#999;
 }
 
-
-header.main h2 {
-  color: inherit;
-  line-height: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-
 article header h1 {
   margin-bottom: 5px;
 }
