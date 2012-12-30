@@ -1,49 +1,50 @@
-Unwilling to shell out <a href="http://www.amazon.com/Adobe-Flash-Builder-4-5-Premium/dp/B004VAOJJ8/ref=pd_cp_sw_0">~$600</a> for Flash Builder 4 Premium or upgrade from my older Flex 3 IDE, my Actionscript development halted a couple of years ago. Not wanting to give up completely on Adobe webdev, I gave the open-source Flex SDK a shot and configured my Eclipse environment for good-old Flash. The result wasn't as painless as I'd thought.
+<h2>Compiling the Flex 4.5 SDK in Eclipse for the brave & patient</h2>
+<p>Unwilling to shell out <a href="http://www.amazon.com/Adobe-Flash-Builder-4-5-Premium/dp/B004VAOJJ8/ref=pd_cp_sw_0">~$600</a> 
+for Flash Builder 4 Premium or upgrade from my older Flex 3 IDE, my Actionscript development halted a couple of years ago. 
+Not wanting to give up completely on Adobe webdev, I gave the open-source Flex SDK a shot and configured my Eclipse environment for good-old Flash. 
+The result wasn't as painless as I'd thought.</p>
 
 <!--more-->
 
-First download the Flash uninstaller (<a href="http://helpx.adobe.com/flash-player/kb/uninstall-flash-player-mac-os.html">Mac</a>, <a href="http://helpx.adobe.com/flash-player/kb/uninstall-flash-player-windows.html">Windows</a>) and . Might want to bookmark or save this blog URL since the Flash loader will make you force-quit all internet browsers.
+<p>First download the Flash uninstaller (<a href="http://helpx.adobe.com/flash-player/kb/uninstall-flash-player-mac-os.html">Mac</a>, <a href="http://helpx.adobe.com/flash-player/kb/uninstall-flash-player-windows.html">Windows</a>) and . Might want to bookmark or save this blog URL since the Flash loader will make you force-quit all internet browsers.</p>
 
-After giving Flash the boot, grab the latest Flex SDK from <a href="http://www.adobe.com/devnet/flex/flex-sdk-download.html">Adobe's developer site</a>. The SDK includes the compiler we need in our build setup - <i>sdk_root/bin/mxmlc</i> - 
-so extract the SDK somewhere you'll remember. It also includes an installer for the latest debug version of Flash inside <i>sdk_root/runtimes/player/xx.x/your_os</i>
-&nbsp;
+<p>After giving Flash the boot, grab the latest Flex SDK from <a href="http://www.adobe.com/devnet/flex/flex-sdk-download.html">Adobe's developer site</a>. The SDK includes the compiler we need in our build setup - <i>sdk<em>root/bin/mxmlc</i> - 
+so extract the SDK somewhere you'll remember. It also includes an installer for the latest debug version of Flash inside <i>sdk</em>root/runtimes/player/xx.x/your_os</i>
+&nbsp;</p>
 
-Setting up a Flex SDK project in Eclipse involves creating a builder and passing in custom arguments. The builder simply compiles the application using lib &amp; SDK references and saves it to a SWF file in the bin folder. The arguments look like
+<p>Setting up a Flex SDK project in Eclipse involves creating a builder and passing in custom arguments. The builder simply compiles the application using lib &amp; SDK references and saves it to a SWF file in the bin folder. The arguments look like
 <i>src/application.mxml -output=bin/application.swf -library-path+=libs/ -target-player=xx.x</i>
-with the 'xx.x' replaced by the minimum version of Flash required by the SDK you are using. Min versions by SDK are:
+with the 'xx.x' replaced by the minimum version of Flash required by the SDK you are using. Min versions by SDK are:</p>
 
-Flex 4.0 SDK - Flash 10.0 minimum
+<p>Flex 4.0 SDK - Flash 10.0 minimum
 Flex 4.5 SDK - Flash 10.2 minimum
-Flex 4.6 SDK - Flash 11.1 minimum
+Flex 4.6 SDK - Flash 11.1 minimum</p>
 
-
-I won't go through the Eclipse project setup here as other blogs cover this pretty in-depth. See these for coverage:
+<p>I won't go through the Eclipse project setup here as other blogs cover this pretty in-depth. See these for coverage:
 <a href="http://www.seanhsmith.com/2010/03/29/flex-for-free-setting-up-the-flex-4-sdk-with-eclipse-ide/">barebones walkthrough with screenshots</a>
-<a href="http://www.jakehilton.com/?q=node/27">detailed walkthrough</a>
+<a href="http://www.jakehilton.com/?q=node/27">detailed walkthrough</a></p>
 
-Scouring Google will lead to some pitfalls searching for up-to-date MXML &amp; AS3 editor plugins for your non-Flash-Builder IDE. To save you the trouble, FlexFormatter is the best plugin I've found and lets you customize the format handling of both MXML &amp; AS3.
+<p>Scouring Google will lead to some pitfalls searching for up-to-date MXML &amp; AS3 editor plugins for your non-Flash-Builder IDE. To save you the trouble, FlexFormatter is the best plugin I've found and lets you customize the format handling of both MXML &amp; AS3.</p>
 
-FlexFormatter links:
+<p>FlexFormatter links:
 <a href="http://code.google.com/p/flexformatter/">Google Code</a>
 <a href="http://sourceforge.net/projects/flexformatter/">SourceForge</a>
-<a href="http://flexformatter.googlecode.com/svn/trunk/FlexFormatter/FlexPrettyPrintCommandUpdateSite">Update Site</a>
+<a href="http://flexformatter.googlecode.com/svn/trunk/FlexFormatter/FlexPrettyPrintCommandUpdateSite">Update Site</a></p>
 
+<p>Other widely used, open-source plugins are xsd4mxml and Axdt. I'm not sure though if these plugin projects are still being maintained.</p>
 
-Other widely used, open-source plugins are xsd4mxml and Axdt. I'm not sure though if these plugin projects are still being maintained.
+<p>xsd4mxml links:
+<a href="http://code.google.com/p/xsd4mxml/">Google Code</a></p>
 
-xsd4mxml links:
-<a href="http://code.google.com/p/xsd4mxml/">Google Code</a>
-
-Axdt links:
+<p>Axdt links:
 <a href="http://marketplace.eclipse.org/content/axdt">Eclipse Marketplace</a>
 <a href="https://github.com/mb0/axdt/">GitHub</a>
-<a href="http://svn.codespot.com/a/eclipselabs.org/axdt/trunk/site/">Update Site</a>
+<a href="http://svn.codespot.com/a/eclipselabs.org/axdt/trunk/site/">Update Site</a></p>
 
-FDT links:
+<p>FDT links:
 <a href="http://marketplace.eclipse.org/content/fdt-1">Eclipse Marketplace</a>
-<a href="http://fdt.powerflasher.com/update/fdt5/">Update Site</a>
+<a href="http://fdt.powerflasher.com/update/fdt5/">Update Site</a></p>
 
+<p>While you're at it you'll want to gitclone and import <a href="https://github.com/mikechambers/as3corelib" target="_blank">as3corelib</a> - a practical swiss-army knife of actionscript classes and utilities.</p>
 
-While you're at it you'll want to gitclone and import <a href="https://github.com/mikechambers/as3corelib" target="_blank">as3corelib</a> - a practical swiss-army knife of actionscript classes and utilities.
-
-On the subject, if you're up for trying a new actionscript development architecture I've been very impressed by <a href="http://swizframework.org/" target="_blank">Swiz Framework</a>. Swiz uses Inversion of Control through instantiating a BeanProvider class which initially registers controllers, delegates, services, models, and presentation-models (declared as prototypes). These can be flexibly injected with bindings throughout the app. It even supports reverse and two-way (bijection?) bindings.
+<p>On the subject, if you're up for trying a new actionscript development architecture I've been very impressed by <a href="http://swizframework.org/" target="_blank">Swiz Framework</a>. Swiz uses Inversion of Control through instantiating a BeanProvider class which initially registers controllers, delegates, services, models, and presentation-models (declared as prototypes). These can be flexibly injected with bindings throughout the app. It even supports reverse and two-way (bijection?) bindings.</p>
