@@ -52,6 +52,11 @@ a small {
   overflow:hidden;
 }
 
+/***    TESTING    **/
+.center{
+    text-align:center;
+}
+
 blockquote {
   border-left:1px solid #e5e5e5;
   margin:0;
@@ -105,11 +110,21 @@ header {
 
 }
 
+.subtext {
+    font-size:18px;
+}
+
 #socialIconSet {
     list-style:none;
-    height:20px;
+    height:30px;
+    display:table;
+    margin:0 auto;
+    padding-left:0;
+    float:left;
+}
+
+#socialIconSet li {
     display:inline;
-    display:-moz-inline-box;
 }
 
 .iconWrapper {
@@ -117,6 +132,11 @@ header {
     padding: 0 5px 0 5px;
 }
 
+.navList {
+    list-style:none;
+    font-size:18px;
+    padding-left:0;
+}
 
 /* SOCIAL ICON SPRITES */
 
