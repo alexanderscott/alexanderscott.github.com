@@ -110,6 +110,19 @@ header {
 
 }
 
+.wrapper.nav-center {
+    text-align: center;
+}
+.wrapper.nav-center > * {
+    width: inherit;
+}
+.wrapper.nav-center #socialIconSet {
+    float:none;
+}
+.wrapper.nav-center #sideNavEl {
+    top: 50%;
+}
+
 .subtext {
     font-size:18px;
 }
@@ -420,4 +433,5 @@ article footer p.gotop {
   }
 }
 
+.mb20 { margin-bottom:20px; }
 
