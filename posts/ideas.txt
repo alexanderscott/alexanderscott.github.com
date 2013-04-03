@@ -1,5 +1,12 @@
-Cloning the stock Mac OSX Lion image w/out App Store download
 
 Function of the week
 
 * Spotify app lessons learned
+* Must-haves for any team bug management platform
+* Take-aways from Sencha Touch build to iOS & Android markets
+* Cloning the stock Mac OSX Lion image w/out App Store download
+
+
+IN PROGRESS
+* Tips for writing effective JavaScript libraries
+
