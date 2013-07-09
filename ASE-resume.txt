@@ -9,38 +9,36 @@ Seeking new challenges, difficult problems, and rewarding opportunities.
 
 SKILL SET
 ===================================================== 
- * Programming: JavaScript (client web & mobile, Node.js), LAMP stack, SASS & LESS CSS, Flash/Flex/Air, C# .NET, VBA, Oracle PL/SQL
+ * Programming: JavaScript (client web & mobile, Node.js), Nginx & LAMP stacks, SASS & LESS CSS, Flash/Flex/Air, C# .NET, VBA, PL/SQL
  * Analytics:  TIBCO Spotfire, S-Plus, R, Pentaho, Cognos
  * Languages:  Spanish (proficient), French (limited)
-
-
-EDUCATION
-===================================================== 
-
-University of Virginia, School of Engineering and Applied Science (2006 - 2010)
--------------------
-BS in Systems Engineering, Minor in Engineering Business
- * Cumulative GPA: 3.5   Major GPA: 3.5
- * Head of Research for the McIntire Socially Responsible Investment Organization (2008 - 2010)
- * President of Sigma Phi Epsilon Fraternity, Virginia Eta Chapter (2008 - 2009)
- * 2220 SAT (800-M, 680-V, 740-W)
 
 
 
 PROFESSIONAL EXPERIENCE
 ===================================================== 
 
-Lead Front-End Engineer - TastemakerX (2012 - now)
+CTO & Co-founder - CrowdPush (June 2013 - present)
+--------------------
+ * Full-stack development, architecture, and design for crowdfunding web platform
+ * Managing 3-node Riak cluster on AWS, Nginx and Node.js server middleware, and reverse proxy caching
+ * Setup secure payment system using SSL and Balanced Marketplace
+ * MVP launch planned for September
+
+
+
+Lead Front-End Engineer - TastemakerX (September 2012 - June 2013)
 --------------------
  * Led client-side app development for web and Spotify applications revolving around music discovery 
  * Implemented production-scale Backbone.js & Require.js architecture, incrementally moving from pre-existing PHP views
  * Defined new cross-platform REST API structure and requirements including JSON data return
  * Implemented SASS and migrated site CSS into shared component styles
  * Wrote client build scripts using r.js automated into git hooks
- * Built servers in Node.js for SEO (webkit pre-processing) & analytics (UDP for Mixpanel, Hadoop, & StatsD)
+ * Independently built Node.js servers for SEO, analytics (Mixpanel, Hadoop, Intercom, & StatsD), and Apple Push Notifications
+    
 
 
-IT Leadership Program - GE Energy (2010 - 2012)
+IT Leadership Program - GE Energy (June 2010 - August 2012)
 --------------------
  * Operations BI Developer - Global Application Management Services (Atlanta, GA) 
    * Developed a personalized BI solution (PL/SQL & JS) for support leaders & managers, accelerating through full SDLC 
@@ -67,6 +65,19 @@ IM & Engineering Internships - GE Aviation (2008, 2009)
 
 
 
+EDUCATION
+===================================================== 
+
+University of Virginia, School of Engineering and Applied Science (2006 - 2010)
+-------------------
+BS in Systems Engineering, Minor in Engineering Business
+ * Cumulative GPA: 3.5   Major GPA: 3.5
+ * Head of Research for the McIntire Socially Responsible Investment Organization (2008 - 2010)
+ * President of Sigma Phi Epsilon Fraternity, Virginia Eta Chapter (2008 - 2009)
+ * 2220 SAT (800-M, 680-V, 740-W)
+
+
+
 AWARDS & RECOGNITION
 ===================================================== 
  * TastemakerX web app awarded 2nd place in 2013 SXSW Music Accelerator out of over 500 candidates 
@@ -81,7 +92,7 @@ SIDE-PROJECTS & HOBBIES
 TabHammer
 --------------------
  * Learn new jams and manage your personal portfolio of sheet music.
- * Angular.js + Twitter Bootstrap SASS, Node.js server & Express API, Phantom.js web-crawlers
+ * Angular.js + Twitter Bootstrap SASS, Node.js server & Express API, Phantom.js
 
 
 The Slice Is Right
