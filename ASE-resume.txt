@@ -4,7 +4,7 @@ alex.ehrnschwender@gmail.com
 San Francisco, CA
 
 Systems engineer with international experience in software development & project management.   
-Seeking new challenges, difficult problems, and rewarding opportunities.
+Seeking new challenges, difficult problems, and exciting opportunities.
 
 
 SKILL SET
@@ -18,12 +18,12 @@ SKILL SET
 PROFESSIONAL EXPERIENCE
 ===================================================== 
 
-CTO & Co-founder - CrowdPush (June 2013 - present)
+CTO & Co-founder - CrowdPush (July 2013 - present)
 --------------------
  * Full-stack development, architecture, and design for crowdfunding web platform
  * Managing 3-node Riak cluster on AWS, Nginx and Node.js server middleware, and reverse proxy caching
  * Setup secure payment system using SSL and Balanced Marketplace
- * MVP launch planned for September
+ * MVP launch planned for October
 
 
 
