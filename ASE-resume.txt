@@ -18,15 +18,7 @@ SKILL SET
 PROFESSIONAL EXPERIENCE
 ===================================================== 
 
-CTO & Co-founder - CrowdPush (July 2013 - present)
---------------------
- * Full-stack development, architecture, and design for crowdfunding web platform
- * Managing Postgres back-end, Nginx, Rails and Node.js server middleware, and reverse proxy caching
- * Setup secure payment system using SSL and Balanced Marketplace
- * MVP launch planned for October
-
-
-Lead Front-End Engineer - TastemakerX (September 2012 - June 2013)
+Lead Front-End Engineer - TastemakerX (September 2012 - present)
 --------------------
  * Led client-side app development for web and Spotify applications revolving around music discovery 
  * Implemented production-scale Backbone.js & Require.js architecture, incrementally moving from pre-existing PHP views
