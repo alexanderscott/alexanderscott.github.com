@@ -3,4 +3,4 @@ alexanderscott.github.com
 
 Deep thoughts...
 
-![alt text](http://imgon.net/di-JMPP.gif "hard at work")
+![alt text](http://assets.ehrns.com/images/programming.gif "hard at work")
