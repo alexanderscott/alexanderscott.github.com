@@ -1,0 +1,1701 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-29T19:35:48-07:00</updated><id>http://localhost:4000/</id><title type="html">Alex Ehrnschwender</title><subtitle>software engineer &amp; music geek
+</subtitle><entry><title type="html">Introducing iconerator – automatically generate all app market icons from a single image file</title><link href="http://localhost:4000/2013/11/iconerator/" rel="alternate" type="text/html" title="Introducing iconerator &amp;#8211; automatically generate all app market icons from a single image file" /><published>2013-11-05T09:58:14-08:00</published><updated>2013-11-05T09:58:14-08:00</updated><id>http://localhost:4000/2013/11/iconerator</id><content type="html" xml:base="http://localhost:4000/2013/11/iconerator/">&lt;p&gt;The icon requirements from the iOS App Store (9 unique) and Google Play Market (6 unique) are annoying to say the least.  Updating one pepperoni on the &lt;a href=&quot;https://itunes.apple.com/us/app/slice-is-right/id626650004?ls=1&amp;amp;mt=8&quot;&gt;SliceIsRight&lt;/a&gt; means generating 15 new icons following the specific guidelines set forth by the Apple &amp;amp; Google gatekeepers.  The bain of every developer’s existence is boring, repetitive tasks (ex/ re-sizing and compressing a slew of PNGs) and it boggles me why this process has not already been automated by the open source community.  To save us all the headache (and the $3 – $5 for some &lt;a href=&quot;https://itunes.apple.com/us/app/icon-resize/id730352774?mt=12&quot;&gt;lame Mac app GUI&lt;/a&gt;), I give you &lt;a href=&quot;https://github.com/alexanderscott/iconerator&quot;&gt;Iconerator&lt;/a&gt; – a customizable command line tool to automate the generation of app market icons. &lt;!--more--&gt; Installing and running iconerator is easy.  Assuming you have node/npm installed along with&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://brew.sh/&quot;&gt;homebrew&lt;/a&gt;: &lt;span class=&quot;lang:default highlight:0 decode:true crayon-inline &quot;&gt;$ brew install imagemagick &amp;amp;&amp;amp; brew install graphicsmagick&lt;/span&gt; &lt;span class=&quot;lang:default decode:true crayon-inline&quot;&gt;$ npm install -g iconerator&lt;/span&gt;   And now next time you need to generate all of those app market icons, simply run with: &lt;span class=&quot;lang:default highlight:0 decode:true crayon-inline&quot;&gt;$ iconerator [options] &amp;lt;img file …&amp;gt;&amp;lt;optional output path …&amp;gt;&lt;/span&gt; ex/  &lt;span class=&quot;lang:default highlight:0 decode:true crayon-inline  &quot;&gt;$ iconerator sliceisright.png . &lt;/span&gt;   Depending on any options you include, an android and an ios directory will be created in the specified  directory and will contain all of the necessary icon sizes &amp;amp; resolutions with appropriate names. Only releasing to the iOS App Store?  No problem – just include the &lt;span class=&quot;lang:default highlight:0 decode:true  crayon-inline &quot;&gt;–only-ios&lt;/span&gt;  option.&lt;/p&gt;
+
+&lt;pre class=&quot;striped:false marking:false ranges:false nums:false nums-toggle:false lang:default highlight:0 decode:true&quot; title=&quot;Command-line Options&quot;&gt;-h, --help      #output usage information
+-V, --version   #output the version number
+--only-ios      #Only generate iOS icons
+--only-android  #Only generate Android icons
+--only-iphone   #Only generate iPhone icons
+--only-ipad     #Only generate iPad icons
+--only-web      #Only generate Web icons&lt;/pre&gt;
+
+&lt;p&gt;  The full list of default icon sizes (in pixels) is:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;16×16 (Web)&lt;/li&gt;
+  &lt;li&gt;29×29 (iOS)&lt;/li&gt;
+  &lt;li&gt;32×32 (Web)&lt;/li&gt;
+  &lt;li&gt;36×36 (Android)&lt;/li&gt;
+  &lt;li&gt;40×40 (iOS)&lt;/li&gt;
+  &lt;li&gt;48×48 (Android, Web)&lt;/li&gt;
+  &lt;li&gt;58×58 (iOS)&lt;/li&gt;
+  &lt;li&gt;60×60 (iOS)&lt;/li&gt;
+  &lt;li&gt;64×64 (Web)&lt;/li&gt;
+  &lt;li&gt;72×72 (Android)&lt;/li&gt;
+  &lt;li&gt;76×76 (iOS)&lt;/li&gt;
+  &lt;li&gt;80×80 (iOS)&lt;/li&gt;
+  &lt;li&gt;96×96 (Android)&lt;/li&gt;
+  &lt;li&gt;120×120 (iOS)&lt;/li&gt;
+  &lt;li&gt;144×144 (Android)&lt;/li&gt;
+  &lt;li&gt;152×152 (iOS)&lt;/li&gt;
+  &lt;li&gt;512×512 (iOS &amp;amp; Android)&lt;/li&gt;
+  &lt;li&gt;1024×1024 (iOS)   The processing script itself is only&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/alexanderscott/iconerator/blob/master/lib/iconerator.js&quot;&gt;~100 lines of JavaScript&lt;/a&gt;.  Quick &amp;amp; easy, but a useful time-saver.  Hope it helps!  &lt;/p&gt;</content><author><name>alex</name></author><summary type="html">The icon requirements from the iOS App Store (9 unique) and Google Play Market (6 unique) are annoying to say the least.  Updating one pepperoni on the SliceIsRight means generating 15 new icons following the specific guidelines set forth by the Apple &amp;amp; Google gatekeepers.  The bain of every developer’s existence is boring, repetitive tasks (ex/ re-sizing and compressing a slew of PNGs) and it boggles me why this process has not already been automated by the open source community.  To save us all the headache (and the $3 – $5 for some lame Mac app GUI), I give you Iconerator – a customizable command line tool to automate the generation of app market icons. Installing and running iconerator is easy.  Assuming you have node/npm installed along with</summary></entry><entry><title type="html">Dynamic ActiveRecord querying in Rails 4 by example</title><link href="http://localhost:4000/2013/10/dynamic-activerecord-querying-rails-4/" rel="alternate" type="text/html" title="Dynamic ActiveRecord querying in Rails 4 by example" /><published>2013-10-09T11:42:51-07:00</published><updated>2013-10-09T11:42:51-07:00</updated><id>http://localhost:4000/2013/10/dynamic-activerecord-querying-rails-4</id><content type="html" xml:base="http://localhost:4000/2013/10/dynamic-activerecord-querying-rails-4/">&lt;p&gt;One of my biggest frustrations with ActiveRecord and many other ORMs (looking at you, &lt;a href=&quot;https://github.com/dresende/node-orm2&quot; target=&quot;_blank&quot;&gt;node-orm2&lt;/a&gt;) is the lack of a solid query builder to join various, dynamic query filters into a single  SQL statement.  It seems obvious that this should be the meat-and-potatoes of the entire query language abstraction framework, and yet there is still no clean way to build a SQL statement containing a variable combination of attribute filters.  Below we’ll examine some different functional (yet still ugly) techniques for doing so.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Imagine for a second you are building an app to best match prospective guitar players with the guitar of their dreams.  To do so, you build a slick web interface with a large number of filter inputs for future rockers to drill-down based on what they deem important, and want to return a ranked list of guitars matching this criteria.  You begin by defining a basic schema (oversimplified for our purposes) and writing the migrations.&lt;/p&gt;
+
+&lt;pre class=&quot;lang:ruby decode:true&quot; title=&quot;Guitars table migration&quot;&gt;class CreateGuitars &amp;lt; ActiveRecord::Migration
+  def change
+    create_table &quot;guitars&quot; do |t|
+      t.string &quot;type&quot;, :null =&amp;gt; false               # Guitar, Banjo, Bass Guitar, Ukelele, etc
+      t.string &quot;make&quot;, :null =&amp;gt; false               # Gibson, Fender, PRS, etc
+      t.string &quot;model&quot;, :null =&amp;gt; false              # SG, Stratocaster, Flying-V, etc
+      t.string &quot;color&quot;                              # Hot-rod Red, Lightning Blue
+      t.integer &quot;price&quot;, :null =&amp;gt; false
+      t.integer &quot;year&quot;, :null =&amp;gt; false
+      t.boolean &quot;used&quot;, :default =&amp;gt; false
+      t.timestamps
+    end
+  end
+end&lt;/pre&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;pre class=&quot;lang:ruby decode:true&quot; title=&quot;Merchants table migration&quot;&gt;class CreateMerchants &amp;lt; ActiveRecord::Migration
+  def change
+    create_table &quot;merchants&quot; do |t|
+      t.string &quot;name&quot;, :null =&amp;gt; false
+      t.string &quot;city&quot;, :null =&amp;gt; false
+      t.string &quot;state&quot;
+      t.string &quot;email&quot;
+      t.string &quot;phone&quot;
+    end
+  end
+end&lt;/pre&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;After gathering and inserting a substantial amount of guitar inventory &amp;amp; spec data from Guitar Center and local pawn shops, you begin drafting the API.  Rock enthusiasts should be able to filter on all guitar model attributes, though they may only choose to filter on one or two.  Seems easy, right?  This brings us to Ugly Solution #1:&lt;/p&gt;
+
+&lt;pre class=&quot;lang:default decode:true&quot; title=&quot;Ugly Solution #1 - a whole bunch of conditionals&quot;&gt;@guitars = Guitar.limit(25).includes( [:merchants] ).order( &quot;#{params[:order] || 'price'} #{params[:sort] || 'DESC'}&quot; )
+
+@guitars = @guitars.where('type', params[:type]) if params[:type]
+@guitars = @guitars.where('make', params[:make]) if params[:make]
+@guitars = @guitars.where('model', params[:model]) if params[:model]
+@guitars = @guitars.where('color', params[:color]) if params[:color]
+@guitars = @guitars.where('price &amp;lt; ?', params[:price]) if params[:price]
+@guitars = @guitars.where('merchants.city', params[:city]) if params[:city]
+
+render :json =&amp;gt; @guitars.as_json(:include =&amp;gt; :merchants )&lt;/pre&gt;
+
+&lt;p&gt;ActiveRecord evaluates each lazily, so the query will not execute until it is fully built and returned.  That means @guitars will contain the proper runtime clause, though it is rather annoying to have to write the same overriding logic to sub-select and drill into the query.  And the lazy evaluation isn’t all that intuitive.  So let’s try writing a key-value abstraction function to join parameters with their filter attribute.&lt;/p&gt;
+
+&lt;pre class=&quot;lang:default decode:true&quot; title=&quot;Ugly Solution 2 - key abstraction and injection&quot;&gt;filters = [:type, :make, :model, :color]
+wheres = filters.map{|key| params.has_key?(key) ? {key =&amp;gt; params[key]} : {} }
+                .inject({}){|hash, injected| hash.merge!(injected)}
+
+@guitars = Guitar.where(wheres).limit(25)
+render :json =&amp;gt; @guitars.as_json(:include =&amp;gt; :merchants )&lt;/pre&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Sure does look prettier, and way less code.  But what about the price and merchant city filter?  These cannot be achieved with the simple hash matching above.  Well crap.  Let’s try that again, this time building the SQL query a bit more manually.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;pre class=&quot;lang:ruby decode:true&quot; title=&quot;Ugly Solution 3 - query building thru array aggregation&quot;&gt;conditions = String.new
+    wheres = Array.new
+
+    if params.has_key?(:type)
+      conditions &amp;lt;&amp;lt; &quot; AND &quot; unless conditions.length == 0
+      conditions &amp;lt;&amp;lt; &quot;type = ?&quot;
+      wheres &amp;lt;&amp;lt; params[:type]
+    end
+    if params.has_key?(:make)
+      conditions &amp;lt;&amp;lt; &quot; AND &quot; unless conditions.length == 0
+      conditions &amp;lt;&amp;lt; &quot;make = ?&quot;
+      wheres &amp;lt;&amp;lt; params[:make]
+    end
+    if params.has_key?(:model)
+      conditions &amp;lt;&amp;lt; &quot; AND &quot; unless conditions.length == 0
+      conditions &amp;lt;&amp;lt; &quot;model = ?&quot;
+      wheres &amp;lt;&amp;lt; params[:model]
+    end
+    if params.has_key?(:color)
+      conditions &amp;lt;&amp;lt; &quot; AND &quot; unless conditions.length == 0
+      conditions &amp;lt;&amp;lt; &quot;color = ?&quot;
+      wheres &amp;lt;&amp;lt; params[:color]
+    end
+    if params.has_key?(:price)
+      conditions &amp;lt;&amp;lt; &quot; AND &quot; unless conditions.length == 0
+      conditions &amp;lt;&amp;lt; &quot;price &amp;lt; ?&quot;
+      wheres &amp;lt;&amp;lt; params[:price]
+    end
+    if params.has_key?(:city)
+      conditions &amp;lt;&amp;lt; &quot; AND &quot; unless conditions.length == 0
+      conditions &amp;lt;&amp;lt; &quot;merchants.city = ?&quot;
+      wheres &amp;lt;&amp;lt; params[:city]
+    end
+
+    wheres.insert(0, conditions)
+
+    @guitars = Guitar.includes( [:merchants] ).where( wheres )
+                     .order( &quot;#{params[:sort] or 'price'} #{params[:order] or 'DESC'}&quot; ).limit( 25 )
+
+    render :json =&amp;gt; @guitars.as_json(:include =&amp;gt; :merchants )&lt;/pre&gt;
+
+&lt;p&gt;The DRY in you hates all of the copy-paste.  It gets the job done, but what if we want to add new filterable attributes down the road (things like neck shape, fret count, pickup style, etc)?  Using the above convention thats +5 lines of code for every filterable attribute!  And it sits in the API controller layer which is supposed to be thin!  OK, fine.  Let’s sober up and try that again.  Time to consult the rails guides and refactor this using model scopes, their recommended way of handling this kind of dynamic chaining.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;pre class=&quot;lang:default decode:true&quot; title=&quot;Ugly Solution #4 - individually chained scopes&quot;&gt;# Model
+class Guitar &amp;lt; ActiveRecord::Base
+  scope :by_type, lambda { |type|
+    return scoped unless type.present?
+    where(:type =&amp;gt; type)
+  }
+
+  scope :by_color, lambda { |color|
+    return scoped unless color.present?
+    where(:color =&amp;gt; color)
+  }
+
+  scope :by_make, lambda { |make|
+    return scoped unless make.present?
+    where(:make =&amp;gt; make)
+  }
+
+  scope :by_model, lambda { |model|
+    return scoped unless model.present?
+    where(:model =&amp;gt; model)
+  }
+  scope :by_price, lambda { |price|
+    return scoped unless price.present?
+    where(&quot;price &amp;lt; ?&quot;, price)
+  }
+  scope :by_city, lambda { |city|
+    return scoped unless city.present?
+    where(&quot;merchants.city = ?&quot;, city)
+  }
+end
+
+# Controller
+class GuitarsController &amp;lt; ApplicationController
+  def index
+    @guitars = Guitar.includes( [:merchants] )
+                     .by_type( params[:type] ).by_color( params[:color] ).by_make( params[:make] )
+                     .by_model( params[:model] ).by_price( params[:price] ).by_city( params[:city] )
+                     .order( order ).limit( limit )
+
+    render :json =&amp;gt; @guitars.as_json(:include =&amp;gt; :merchants )
+  end
+end&lt;/pre&gt;
+
+&lt;p&gt;Or using class methods:&lt;/p&gt;
+
+&lt;pre class=&quot;lang:ruby decode:true&quot; title=&quot;Ugly Solution #4 - individually chained scopes&quot;&gt;# Model
+class Guitar &amp;lt; ActiveRecord::Base
+
+  def self.by_type(type)
+    return scoped unless type.present?
+    where(:type =&amp;gt; type)
+  end
+  def self.by_color(color)
+    return scoped unless color.present?
+    where(:color =&amp;gt; color)
+  end
+  def self.by_make(make)
+    return scoped unless make.present?
+    where(:make =&amp;gt; make)
+  end
+  def self.by_model(model)
+    return scoped unless model.present?
+    where(:model =&amp;gt; model)
+  end
+  def self.by_price(price)
+    return scoped unless price.present?
+    where(&quot;price &amp;lt; ?&quot;, price)
+  end
+  def self.by_city(city)
+    return scoped unless city.present?
+    where(&quot;merchants.city = ?&quot;, city)
+  end
+
+end
+
+# Controller
+class GuitarsController &amp;lt; ApplicationController
+  def index
+    @guitars = Guitar.includes( [:merchants] )
+                     .by_type( params[:type] ).by_color( params[:color] ).by_make( params[:make] )
+                     .by_model( params[:model] ).by_price( params[:price] ).by_city( params[:city] )
+                     .order( order ).limit( limit )
+
+    render :json =&amp;gt; @guitars.as_json(:include =&amp;gt; :merchants )
+  end
+end&lt;/pre&gt;
+
+&lt;p&gt;Really, Rails?  We can’t group filters inside a scope without knowing beforehand which filters a rocker will select.  As these filters are each independent of each other (except for maybe ‘make’ and ‘model’), we need to create a separate model scope for each.  So for each new filterable attribute, we need to switch between model and controller to create the scope and call it.  This is not only annoying, it is hardly maintainable.  Yet this is the recommended way of chaining WHERE clauses – a very common use case.  Am I missing something?  Hopefully.  Comments appreciated.&lt;/p&gt;</content><author><name>alex</name></author><summary type="html">One of my biggest frustrations with ActiveRecord and many other ORMs (looking at you, node-orm2) is the lack of a solid query builder to join various, dynamic query filters into a single  SQL statement.  It seems obvious that this should be the meat-and-potatoes of the entire query language abstraction framework, and yet there is still no clean way to build a SQL statement containing a variable combination of attribute filters.  Below we’ll examine some different functional (yet still ugly) techniques for doing so.</summary></entry><entry><title type="html">Client-side authentication &amp;#038; session management via Backbone.js and Node.js</title><link href="http://localhost:4000/2013/07/client-side-auth-session-mgmt-backbone-node/" rel="alternate" type="text/html" title="Client-side authentication &amp;#038; session management via Backbone.js and Node.js" /><published>2013-07-07T20:52:36-07:00</published><updated>2013-07-07T20:52:36-07:00</updated><id>http://localhost:4000/2013/07/client-side-auth-session-mgmt-backbone-node</id><content type="html" xml:base="http://localhost:4000/2013/07/client-side-auth-session-mgmt-backbone-node/">&lt;p dir=&quot;ltr&quot;&gt;
+  The rise in client-side apps has created the need for a secure auth workflow via AJAX.  While the authentication handshake isn’t one-size-fits all given the variety in client-side frameworks and server-side APIs, there are certain best practices which can harden the communication and protect your fancy, single-page apps from potential snoopers.  In this post I will review the following practices and implement them in a &lt;a href=&quot;https://github.com/alexanderscott/backbone-login&quot;&gt;demo app&lt;/a&gt; built using Backbone.JS and Node.JS:
+&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;
+  &lt;ul&gt;
+    &lt;li dir=&quot;ltr&quot;&gt;
+      &lt;p dir=&quot;ltr&quot;&gt;
+        &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-site_request_forgery&quot;&gt;CSRF&lt;/a&gt; headers in authentication requests to prevent forgery
+      &lt;/p&gt;
+    &lt;/li&gt;
+    
+    &lt;li dir=&quot;ltr&quot;&gt;
+      &lt;p dir=&quot;ltr&quot;&gt;
+        Auth state persistence through &lt;a href=&quot;http://expressjs.com/api.html#cookieParser&quot;&gt;signed cookies&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/li&gt;
+    
+    &lt;li dir=&quot;ltr&quot;&gt;
+      &lt;p dir=&quot;ltr&quot;&gt;
+        Global (singleton) session model in the client whose state changes can be listened to
+      &lt;/p&gt;
+    &lt;/li&gt;
+    
+    &lt;li dir=&quot;ltr&quot;&gt;
+      &lt;p dir=&quot;ltr&quot;&gt;
+        Client-side + Server-side model validations
+      &lt;/p&gt;
+    &lt;/li&gt;
+    
+    &lt;li dir=&quot;ltr&quot;&gt;
+      &lt;p dir=&quot;ltr&quot;&gt;
+        Salt/hashing of passwords for back-end storage
+      &lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;p dir=&quot;ltr&quot;&gt;
+    &lt;p dir=&quot;ltr&quot;&gt;
+      &lt;!--more--&gt;
+    &lt;/p&gt;
+    
+    &lt;p dir=&quot;ltr&quot;&gt;
+      &lt;p&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;h2 dir=&quot;ltr&quot;&gt;
+        &lt;strong&gt;Demo App Overview&lt;/strong&gt;
+      &lt;/h2&gt;
+      
+      &lt;p dir=&quot;ltr&quot;&gt;
+        The &lt;a href=&quot;https://github.com/alexanderscott/backbone-login&quot;&gt;demo app&lt;/a&gt; consists of both client-side &amp;amp; server-side components.
+      &lt;/p&gt;
+      
+      &lt;p dir=&quot;ltr&quot;&gt;
+        &lt;p dir=&quot;ltr&quot;&gt;
+          The server-layer is a lightweight, single-file &lt;a href=&quot;http://expressjs.com/&quot;&gt;Express.js&lt;/a&gt; HTTP server and &lt;a href=&quot;http://www.sqlite.org/&quot;&gt;SQLLite3&lt;/a&gt; db.  It responds to a number of typical authentication API routes, as well as renders the initial index.html page wrapper to plant the session CSRF token.  While it’s a good practice to have an isolated User/Auth model in the server which handles validations and database interaction, for simplicity this functionality is encapsulated inside API handlers (a.k.a. at the controller-level).
+        &lt;/p&gt;
+        
+        &lt;p dir=&quot;ltr&quot;&gt;
+          &lt;p dir=&quot;ltr&quot;&gt;
+            The client-side is structured using &lt;a href=&quot;http://backbonejs.org&quot;&gt;Backbone.js&lt;/a&gt; (probably the most common client-side MV* framework) and &lt;a href=&quot;http://requirejs.org&quot;&gt;Require.js&lt;/a&gt; (a popular, dependency-based module framework).  It is also rather bare with only a couple views, a pushState-enabled router, and models for a User and a Session.  The client communicates with the server via Backbone.sync methods, which essentially just wrap standard AJAX CRUD operations.
+          &lt;/p&gt;
+          
+          &lt;p dir=&quot;ltr&quot;&gt;
+            &lt;p&gt;
+              &amp;nbsp;
+            &lt;/p&gt;
+            
+            &lt;h2 dir=&quot;ltr&quot;&gt;
+              &lt;strong&gt;CSRF&lt;/strong&gt;
+            &lt;/h2&gt;
+            
+            &lt;p dir=&quot;ltr&quot;&gt;
+              A &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-site_request_forgery&quot;&gt;CSRF token&lt;/a&gt; is essentially a means for the server to recognize the identity of the requesting client.  This identity detection is used to prevent &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-site_scripting&quot;&gt;XSS (Cross-Site Scripting)&lt;/a&gt; from other scripts which may also be running on the page.  The randomized token is generated and planted by the server in the client’s HTML meta tags (which should not be refreshed in a single-page app) or inside of a hidden form element.  The client can then choose to include this token in the headers (more specifically a “X-CSRF-Token” header) of AJAX requests as a means of identification &amp;amp; authorization.
+            &lt;/p&gt;
+            
+            &lt;p dir=&quot;ltr&quot;&gt;
+              &lt;p dir=&quot;ltr&quot;&gt;
+                Most large, server-side frameworks in-use today provide a means of generating and validating a CSRF token.  In the demo app, we use the &lt;a href=&quot;http://expressjs.com/api.html#csrf&quot;&gt;CSRF Express.js middleware&lt;/a&gt;, and the &lt;a href=&quot;https://github.com/donpark/hbs&quot;&gt;Express.js Handlebars templating engine&lt;/a&gt; to render the initial HTML wrapper with this token.
+              &lt;/p&gt;
+              
+              &lt;p dir=&quot;ltr&quot;&gt;
+                &lt;pre class=&quot;toolbar:1 start-line:18 lang:js decode:true&quot; title=&quot;index.html&quot;&gt;&amp;lt;meta name=&quot;csrf-token&quot; content=&quot;&quot;&amp;gt;&lt;/pre&gt;
+                
+                &lt;p dir=&quot;ltr&quot;&gt;
+                  &lt;p dir=&quot;ltr&quot;&gt;
+                    In the client SessionModel, we extract this token from the meta content using jQuery, and include it in our authentication POST headers.  Our server then can validate the client’s identity when an authentication request is received.
+                  &lt;/p&gt;
+                  
+                  &lt;pre class=&quot;toolbar:1 start-line:66 lang:js decode:true&quot; title=&quot;SessionModel.js&quot;&gt;        /*
+         * Abstracted fxn to make a POST request to the auth endpoint
+         * This takes care of the CSRF header for security, as well as
+         * updating the user and session after receiving an API response
+         */
+        postAuth: function(opts, callback, args){
+            var self = this;
+            var postData = _.omit(opts, 'method');
+            $.ajax({
+                url: this.url() + '/' + opts.method,
+                contentType: 'application/json',
+                dataType: 'json',
+                type: 'POST',
+                beforeSend: function(xhr) {
+                    // Set the CSRF Token in the header for security
+                    var token = $('meta[name=&quot;csrf-token&quot;]').attr('content');
+                    if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+                },
+                data:  JSON.stringify( _.omit(opts, 'method') ),
+                success: function(res){
+
+                    if( !res.error ){
+                        if(_.indexOf(['login', 'signup'], opts.method) !== -1){
+
+                            self.updateSessionUser( res.user || {} );
+                            self.set({ user_id: res.user.id, logged_in: true });
+                        } else {
+                            self.set({ logged_in: false });
+                        }
+
+                        if(callback &amp;amp;&amp;amp; 'success' in callback) callback.success(res);
+                    } else {
+                        if(callback &amp;amp;&amp;amp; 'error' in callback) callback.error(res);
+                    }
+                },
+                error: function(mod, res){
+                    if(callback &amp;amp;&amp;amp; 'error' in callback) callback.error(res);
+                }
+            }).complete( function(){
+                if(callback &amp;amp;&amp;amp; 'complete' in callback) callback.complete(res);
+            });
+        }
+&lt;/pre&gt;
+                  
+                  &lt;p&gt;
+                    &amp;nbsp;
+                  &lt;/p&gt;
+                  
+                  &lt;p dir=&quot;ltr&quot;&gt;
+                    For a deeper dive into CSRF, I recommend consulting the in-depth &lt;a href=&quot;http://edgeguides.rubyonrails.org/security.html#cross-site-request-forgery-csrf&quot;&gt;Ruby on Rails security guide&lt;/a&gt;.
+                  &lt;/p&gt;
+                  
+                  &lt;p dir=&quot;ltr&quot;&gt;
+                    &lt;p&gt;
+                      &lt;br class=&quot;blank&quot; /&gt;&lt;br class=&quot;blank&quot; /&gt;
+                    &lt;/p&gt;
+                    
+                    &lt;h2 dir=&quot;ltr&quot;&gt;
+                      Signed cookies
+                    &lt;/h2&gt;
+                    
+                    &lt;p dir=&quot;ltr&quot;&gt;
+                      Persistent, cookie-based sessions are becoming more and more common among single-page apps today.  Who wants to have to log back into a site every time they re-open it in their browser?  Not me.
+                    &lt;/p&gt;
+                    
+                    &lt;p dir=&quot;ltr&quot;&gt;
+                      &lt;p dir=&quot;ltr&quot;&gt;
+                        Cookies are simply key-value pairs stored in the browser with domain-level specificity and expiration.  Persistent auth is often achieved through cookies because they can be read (in the request) and written (in the response) by the owning domain’s server.  Similar to CSRF, cookies can act to identify a client based on their value.  Because cookies can be read by client scripts, including scripts from external sources, these must be encrypted/decrypted (signed/unsigned) by the server using a special key.  Encryption is not always necessary for basic state-representative cookies, but it surely is when using the cookie value as a means of authenticating a client.
+                      &lt;/p&gt;
+                      
+                      &lt;p dir=&quot;ltr&quot;&gt;
+                        &lt;p dir=&quot;ltr&quot;&gt;
+                          Almost all server-side frameworks in use today have a means of creating and parsing signed cookies, but it is largely up to the server-side developer with how to store and manage their lifecycle.  The back-end creation and fetching of client sessions can get more complex when a single user can have multiple active, persistent sessions.  This creates the need for separating Authentications from Users in the back-end, relationally linking the two via a foreign ID.
+                        &lt;/p&gt;
+                        
+                        &lt;p dir=&quot;ltr&quot;&gt;
+                          &lt;p dir=&quot;ltr&quot;&gt;
+                            For simplicity in our demo app, however, we store this signed authentication token inside of the User table, from which we can update and query.  The &lt;a href=&quot;http://expressjs.com/api.html#cookieParser&quot;&gt;Express.js cookie parser middleware&lt;/a&gt; takes care of the signing for us if we pass in a secret key.
+                          &lt;/p&gt;
+                          
+                          &lt;p dir=&quot;ltr&quot;&gt;
+                            &lt;pre class=&quot;toolbar:1 start-line:52 lang:js decode:true&quot; title=&quot;server.js&quot;&gt;// Cookie config
+app.use( express.cookieParser( 'bb-login-secret' ) );           // populates req.signedCookies
+app.use( express.cookieSession( 'bb-login-secret' ) );          // populates req.session, needed for CSRF&lt;/pre&gt;
+                            
+                            &lt;p&gt;
+                              &lt;br class=&quot;blank&quot; /&gt;&lt;br class=&quot;blank&quot; /&gt;
+                            &lt;/p&gt;
+                            
+                            &lt;h2 dir=&quot;ltr&quot;&gt;
+                              &lt;strong&gt;Global, client-side session model&lt;/strong&gt;
+                            &lt;/h2&gt;
+                            
+                            &lt;p dir=&quot;ltr&quot;&gt;
+                              Building a modular, client-side app you quickly begin to realize how many views and underlying controller functionality depends on a user’s session &amp;#8211; specifically a user’s logged-in state and certain logged-in user attributes.  &lt;a href=&quot;http://javascript.crockford.com/code.html&quot;&gt;Global variables aren’t often a good practice in JavaScript&lt;/a&gt;, but having a singleton SessionModel which houses this information and can be accessed throughout your app is downright awesome.  We sacrifice the performance in the  memory-management of a global object, but make up for it with having a single-source of truth for client session retrieval.  It also enables us to listen for changes in the model and render/react accordingly.
+                            &lt;/p&gt;
+                            
+                            &lt;p dir=&quot;ltr&quot;&gt;
+                              &lt;p dir=&quot;ltr&quot;&gt;
+                                The &lt;a href=&quot;https://github.com/alexanderscott/backbone-login&quot;&gt;demo app&lt;/a&gt; uses a persistent global Backbone.js SessionModel to manage state. Views and other models all can:
+                              &lt;/p&gt;
+                              
+                              &lt;ul&gt;
+                                &lt;li dir=&quot;ltr&quot;&gt;
+                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                    subscribe to changes in session state
+                                  &lt;/p&gt;
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                              
+                              &lt;p style=&quot;padding-left: 60px;&quot;&gt;
+                                ex/ &lt;span class=&quot;lang:js decode:true  crayon-inline &quot;&gt;app.session.on(&amp;#8220;change:logged_in&amp;#8221;, this.onLoginStatusChange);&lt;/span&gt;
+                              &lt;/p&gt;
+                              
+                              &lt;ul&gt;
+                                &lt;li dir=&quot;ltr&quot;&gt;
+                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                    extract current user data
+                                  &lt;/p&gt;
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                              
+                              &lt;p style=&quot;padding-left: 60px;&quot;&gt;
+                                ex/ &lt;span class=&quot;lang:js decode:true  crayon-inline &quot;&gt;&amp;#8220;Logged in as &amp;#8220;+app.session.user.get(&amp;#8220;username&amp;#8221;)&lt;/span&gt;
+                              &lt;/p&gt;
+                              
+                              &lt;ul&gt;
+                                &lt;li dir=&quot;ltr&quot;&gt;
+                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                    trigger auth events (login, logout, etc)
+                                  &lt;/p&gt;
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                              
+                              &lt;p style=&quot;padding-left: 60px;&quot;&gt;
+                                ex/ &lt;span class=&quot;lang:js decode:true  crayon-inline &quot;&gt;app.session.logout({});&lt;/span&gt;
+                              &lt;/p&gt;
+                              
+                              &lt;p dir=&quot;ltr&quot;&gt;
+                                &lt;p dir=&quot;ltr&quot;&gt;
+                                  There are a couple of common security pitfalls when constructing a global Session Model worth bringing to light.
+                                &lt;/p&gt;
+                                
+                                &lt;p dir=&quot;ltr&quot;&gt;
+                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                    1)  Do not let the client model persist sensitive information.  Backbone.js really likes to persist as much model data in the client as it can.  This is often helpful to carry over previously set properties on a model, extending any newly fetched or updated properties onto itself.  If you are letting a Session Model handle authentication, it’s important to immediately purge an auth token, password, or any sensitive information immediately after it is used in a request.  Or simply avoid setting sensitive properties on the model itself, and abstracting these out to a pass-thru function in the model.
+                                  &lt;/p&gt;
+                                  
+                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                    &lt;pre class=&quot;toolbar:0 start-line:32 lang:js decode:true&quot; title=&quot;SessionModel.js&quot;&gt;// Fxn to update user attributes after recieving API response
+updateSessionUser: function( userData ){
+    this.user.set( _.pick( userData, _.keys(this.user.defaults) ) );
+},&lt;/pre&gt;
+                                    
+                                    &lt;p dir=&quot;ltr&quot;&gt;
+                                      2)  Ensure all session communication with the server is via HTTPS.  Your API might not be designed to handle HTTPS everywhere, nor may it be very performant that way, but it is absolutely critical when POSTing passwords and other sensitive information (email, address, etc.) in plaintext over the wire.  Since cookies are tied to a domain and not a protocol, they can be set and parsed by the server interchangeably.  HTTPS can be set in the model-specific  default url, or you can simply set this conditionally using standard AJAX in the model instead of Backbone.sync.
+                                    &lt;/p&gt;
+                                    
+                                    &lt;p dir=&quot;ltr&quot;&gt;
+                                      &lt;p dir=&quot;ltr&quot;&gt;
+                                        3)  Wrap the Session Model in a closure, only allowing access to your other views/models inside the closure.  An app ‘global’ does not mean it is accessible through the window.  Using a modular dependency framework like Require.js lets you explicitly define which of your modules need access to the session, and will wrap everything up for you upon compilation.  In our demo app, we include ‘app’ inside our module definitions when needed.
+                                      &lt;/p&gt;
+                                      
+                                      &lt;p dir=&quot;ltr&quot;&gt;
+                                        &lt;p&gt;
+                                          &lt;br class=&quot;blank&quot; /&gt;&lt;br class=&quot;blank&quot; /&gt;
+                                        &lt;/p&gt;
+                                        
+                                        &lt;h2 dir=&quot;ltr&quot;&gt;
+                                          &lt;strong&gt;Client-side &amp;amp; server-side validations&lt;/strong&gt;
+                                        &lt;/h2&gt;
+                                        
+                                        &lt;p dir=&quot;ltr&quot;&gt;
+                                          As the client should not ever be completely trusted by the server, the ultimate responsibility of XSS cleaning and validating user/authentication data lies with the server.  The server is the gatekeeper to data that can enter your database.
+                                        &lt;/p&gt;
+                                        
+                                        &lt;p dir=&quot;ltr&quot;&gt;
+                                          &lt;p dir=&quot;ltr&quot;&gt;
+                                            That being said, the client can and should validate form data before attempting communication with the server’s API.  Why send unnecessary requests to the API?  The crux of single-page apps is offloading as much responsibility to the client as is practical, and things like validating input length and pattern-matching can be handled easily and performantly in JavaScript.  Although the validations need to occur in both places, it’s more responsive and less load on the server to validate forms in the client first.
+                                          &lt;/p&gt;
+                                          
+                                          &lt;p dir=&quot;ltr&quot;&gt;
+                                            &lt;p dir=&quot;ltr&quot;&gt;
+                                              One library which I’ve found is particularly useful for this is &lt;a href=&quot;http://parsleyjs.org/&quot;&gt;Parsley.js&lt;/a&gt;.  Parsley takes care of a slew of common validations such as input length, pattern-matching, and content equality in very little lines of code.  The validations can even reside in the DOM inside the form input tags themselves with ‘data-’ tags.  One call to &lt;span class=&quot;lang:js decode:true  crayon-inline &quot;&gt;$(&amp;#8216;form&amp;#8217;).parsley(&amp;#8216;validate&amp;#8217;)&lt;/span&gt; and you now have a list of any failed validations visible in the DOM.  Too easy.
+                                            &lt;/p&gt;
+                                            
+                                            &lt;p dir=&quot;ltr&quot;&gt;
+                                              &lt;pre class=&quot;toolbar:1 start-line:58 lang:default decode:true&quot; title=&quot;login-page.html&quot;&gt;&amp;lt;input class=&quot;input-medium&quot; type=&quot;password&quot; id=&quot;signup-password-confirm-input&quot; 
+placeholder=&quot;Confirm Password&quot; name=&quot;user_password&quot; value=&quot;&quot; data-required=&quot;true&quot; data-notblank=&quot;true&quot; 
+data-rangelength=&quot;[5,25]&quot; data-equalto=&quot;#signup-password-input&quot;&amp;gt;&lt;/pre&gt;
+                                              
+                                              &lt;p dir=&quot;ltr&quot;&gt;
+                                                &lt;p&gt;
+                                                  &lt;br class=&quot;blank&quot; /&gt;&lt;br class=&quot;blank&quot; /&gt;
+                                                &lt;/p&gt;
+                                                
+                                                &lt;h2 dir=&quot;ltr&quot;&gt;
+                                                  &lt;strong&gt;Salting/hashing of passwords&lt;/strong&gt;
+                                                &lt;/h2&gt;
+                                                
+                                                &lt;p dir=&quot;ltr&quot;&gt;
+                                                  The last practice of password encryption is not client-side responsibility, but definitely worth reviewing.  If the client is sending passwords as &lt;a href=&quot;http://en.wikipedia.org/wiki/Plaintext&quot;&gt;plaintext&lt;/a&gt; inside of POST requests’ JSON payloads to the server, the server must take the appropriate measures to encrypt those passwords before inserting into the database.
+                                                &lt;/p&gt;
+                                                
+                                                &lt;p dir=&quot;ltr&quot;&gt;
+                                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                                    Although there are many encryption algorithms and practices for our disposal, a safe and common method is to irreversibly salt &amp;amp; hash the password so its final value can be read and compared but not returned into the raw password.  A salt can sit separate from the hash in the database or alongside it (or not sit in the database at all), and one salt can be used for multiple hashes.  As long as both can be retrieved, then they can be compared for equality to a raw password which is the boolean answer needed for the authentication handshake.
+                                                  &lt;/p&gt;
+                                                  
+                                                  &lt;p dir=&quot;ltr&quot;&gt;
+                                                    &lt;p dir=&quot;ltr&quot;&gt;
+                                                      In our demo app we use the &lt;a href=&quot;https://github.com/ncb000gt/node.bcrypt.js/&quot;&gt;bcrypt Node.js module&lt;/a&gt; for the salt &amp;amp; hash generation and comparison.
+                                                    &lt;/p&gt;
+                                                    
+                                                    &lt;p dir=&quot;ltr&quot;&gt;
+                                                      &lt;pre class=&quot;toolbar:1 start-line:93 lang:js decode:true&quot; title=&quot;server.js&quot;&gt;if( bcrypt.compareSync( req.body.password, user.password)){&lt;/pre&gt;
+                                                      
+                                                      &lt;p&gt;
+                                                        &amp;nbsp;
+                                                      &lt;/p&gt;
+                                                      
+                                                      &lt;pre class=&quot;toolbar:1 start-line:115 lang:js decode:true&quot; title=&quot;server.js&quot;&gt;db.run(&quot;INSERT INTO users(username, name, password, auth_token) VALUES (?, ?, ?, ?)&quot;,
+    [ req.body.username, req.body.name, bcrypt.hashSync(req.body.password, 8), bcrypt.genSaltSync(8) ], function(err, rows){&lt;/pre&gt;
+                                                      
+                                                      &lt;p&gt;
+                                                        &amp;nbsp;
+                                                      &lt;/p&gt;
+                                                      
+                                                      &lt;p dir=&quot;ltr&quot;&gt;
+                                                        While you can go down the &lt;a href=&quot;http://en.wikipedia.org/wiki/Secure_Remote_Password_protocol&quot;&gt;rabbit hole&lt;/a&gt; of client-server security, we have covered the basic foundations and general best practices of securing modern web app authentication flow.  Check out the &lt;a href=&quot;https://github.com/alexanderscott/backbone-login&quot;&gt;github repository&lt;/a&gt; and &lt;a href=&quot;http://backbone-login.crunchdevelopment.com/&quot;&gt;live demo&lt;/a&gt; for reference and application of the above concepts.  Appreciate your comments/feedback/questions!
+                                                      &lt;/p&gt;
+                                                      
+                                                      &lt;p dir=&quot;ltr&quot;&gt;
+&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name>alex</name></author><summary type="html">The rise in client-side apps has created the need for a secure auth workflow via AJAX.  While the authentication handshake isn’t one-size-fits all given the variety in client-side frameworks and server-side APIs, there are certain best practices which can harden the communication and protect your fancy, single-page apps from potential snoopers.  In this post I will review the following practices and implement them in a demo app built using Backbone.JS and Node.JS:</summary></entry><entry><title type="html">Developer requirements for effective bug management software</title><link href="http://localhost:4000/2013/03/requirements-for-effective-bug-management-software/" rel="alternate" type="text/html" title="Developer requirements for effective bug management software" /><published>2013-03-19T11:02:49-07:00</published><updated>2013-03-19T11:02:49-07:00</updated><id>http://localhost:4000/2013/03/requirements-for-effective-bug-management-software</id><content type="html" xml:base="http://localhost:4000/2013/03/requirements-for-effective-bug-management-software/">&lt;p&gt;A little while back, the team at &lt;a href=&quot;http://tastemakerx.com&quot;&gt;TastemakerX&lt;/a&gt; decided &lt;a href=&quot;https://trello.com/&quot;&gt;Trello&lt;/a&gt; was not cutting it for tracking and managing bugs. It should come as no surprise that any company requires more sophisticated project management tools as it grows and evolves. Instead of blindly rolling out &lt;a href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, the startup norm, we took a systems analysis approach to the problem. Below is our approach and findings.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Defining the Problem&lt;/p&gt;
+
+&lt;p&gt;—————————&lt;/p&gt;
+
+&lt;p&gt;Don’t get me wrong. I find Trello to be excellent for its sheer simplicity – every developer’s dream with regards to PM tools.  Its @mention functionality is poweful and the left-to-right workflow with stack-ranked cards just makes sense.  Its simplicity excels in small teams ( under around 6 people ), or for one-off or niche purposes, and does not pretend to be a full PM suite.  For anything larger, however, we found Trello lacks the &lt;strong&gt;hierarchical depth&lt;/strong&gt; and &lt;strong&gt;standardization&lt;/strong&gt; needed to remain effective and stay on-task.&lt;/p&gt;
+
+&lt;p&gt;By &lt;strong&gt;hierarchical depth&lt;/strong&gt; I’m loosely referring to the Agile concepts of epic, story, and task.&lt;/p&gt;
+
+&lt;p&gt;Trello uses a one-size-fits-all approach to cards which can mute the importance and relative weight of tasks needing attention.&lt;/p&gt;
+
+&lt;p&gt;Trying to use cards at the task-level means a ton of cards can stack up in each column, versus using at the story-level means a ton of back-and-forth comments, attachments, checkboxes, and headache.&lt;/p&gt;
+
+&lt;p&gt;It gets even more complicated with bugs &amp;amp; QA feedback which often are tied to the story which needs to pass.&lt;/p&gt;
+
+&lt;p&gt;As with tasks, should these be checkboxes as well? What if they fit into more than one story? What if the story has already shipped?&lt;/p&gt;
+
+&lt;p&gt;By &lt;strong&gt;standardization&lt;/strong&gt; I’m referring to common pieces of data needed in an easily scannable and filterable form.&lt;/p&gt;
+
+&lt;p&gt;When it comes to bugs, every developer needs certain core information: environment/browser bug was found on, steps to reproduce, and intended functionality.&lt;/p&gt;
+
+&lt;p&gt;With one free-form text area, it’s often difficult to parse this information quickly, and search is the only filtering medium.&lt;/p&gt;
+
+&lt;p&gt;This is especially a nightmare when the team is in a hurry end-of-spring – where the QA feedback can be as detailed or as “margin is 10px too tall” to “shit’s broken”.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Note: I highly recommend checking out some of the chrome extension plugins such as &lt;a href=&quot;https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje&quot;&gt;Scrum for Trello&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Gathering requirements&lt;/p&gt;
+
+&lt;p&gt;—————————&lt;/p&gt;
+
+&lt;p&gt;With the overall problem in mind, we each listed our requirements for a bug mgmt solution.&lt;/p&gt;
+
+&lt;p&gt;To be fair, these requirements were taken from every stakeholder – developers, QA, Project &amp;amp; Product Management.&lt;/p&gt;
+
+&lt;p&gt;What we came up with were:&lt;/p&gt;
+
+&lt;p&gt;MUST HAVES&lt;/p&gt;
+
+&lt;p&gt;—————————-&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ability to merge bugs or bind them as related&lt;/li&gt;
+  &lt;li&gt;Separate but integrated with Trello (or whatever sprint task mgmt/estimation tool)&lt;/li&gt;
+  &lt;li&gt;Can upload screenshots easily and attach files&lt;/li&gt;
+  &lt;li&gt;Can tag/label bugs and assign, prioritizeable&lt;/li&gt;
+  &lt;li&gt;Logs and bug archive with timestamps, filterable, shows who closed and when&lt;/li&gt;
+  &lt;li&gt;Opt in notifications per status (ex/ I am notified when new or pushed back)&lt;/li&gt;
+  &lt;li&gt;Can comment on specific activity items (not just one long stream of comments not tied to anything)&lt;/li&gt;
+  &lt;li&gt;Analytics (how fast are they piling up? how fast are they being closed? how has this changed over sprint cycles?)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;NICE TO HAVES&lt;/p&gt;
+
+&lt;p&gt;—————————-&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can tie source code or specific commit to a bug that it fixes&lt;/li&gt;
+  &lt;li&gt;Ability to write in markdown format (have you ever tried copy/pasting code into trello? don’t.)&lt;/li&gt;
+  &lt;li&gt;Can close or change bug status from command line (ideally from a specific pull request)&lt;/li&gt;
+  &lt;li&gt;Notification system ideally through growl, an app, browser extension, or something which isn’t email&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Weighing alternatives&lt;/p&gt;
+
+&lt;p&gt;—————————–&lt;/p&gt;
+
+&lt;p&gt;Decision and Roll-out&lt;/p&gt;
+
+&lt;p&gt;——————————&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</content><author><name>alex</name></author><category term="agile" /><category term="bug-tracking" /><category term="SDLC" /><category term="software" /><summary type="html">A little while back, the team at TastemakerX decided Trello was not cutting it for tracking and managing bugs. It should come as no surprise that any company requires more sophisticated project management tools as it grows and evolves. Instead of blindly rolling out github, the startup norm, we took a systems analysis approach to the problem. Below is our approach and findings.</summary></entry><entry><title type="html">Tips for writing effective JavaScript libraries</title><link href="http://localhost:4000/2013/02/tips-for-writing-effective-javascript-libraries/" rel="alternate" type="text/html" title="Tips for writing effective JavaScript libraries" /><published>2013-02-10T09:45:54-08:00</published><updated>2013-02-10T09:45:54-08:00</updated><id>http://localhost:4000/2013/02/tips-for-writing-effective-javascript-libraries</id><content type="html" xml:base="http://localhost:4000/2013/02/tips-for-writing-effective-javascript-libraries/">&lt;ol&gt;
+  &lt;li&gt;Wrap in a self-calling anonymous function&lt;/li&gt;
+  &lt;li&gt;Use strict mode&lt;/li&gt;
+  &lt;li&gt;Leverage deferreds for chaining promises&lt;/li&gt;
+  &lt;li&gt;Limit external dependencies and use native JavaScript where possible&lt;/li&gt;
+  &lt;li&gt;Prototype classes instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;_.extend&lt;/code&gt; where it makes sense&lt;/li&gt;
+  &lt;li&gt;Add AMD compliance by defining and returning a module&lt;/li&gt;
+  &lt;li&gt;Abstract-out configuration &amp;amp; constants, defining them upfront or in a config file&lt;/li&gt;
+  &lt;li&gt;Comment clearly and publish with Docco&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;1-wrap-in-a-self-calling-anonymous-function-1wrapinaselfcallinganonymousfunction&quot;&gt;1. Wrap in a self-calling anonymous function {#1wrapinaselfcallinganonymousfunction}&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Polluting the global namespace is a no-no&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Control your library’s functions and variables inside a ‘closure’&lt;code class=&quot;highlighter-rouge&quot;&gt;(function(){ ... })();&lt;/code&gt; or for a jQuery dependency/plugin&lt;/p&gt;
+
+    &lt;p&gt;(function($){ … })(jQuery);&lt;/p&gt;
+
+    &lt;p&gt;Learn the power of closures for creating public, private, and privileged members from&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.crockford.com/javascript/private.html&quot;&gt;Douglas Crockford&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-use-strict-mode-2usestrictmode&quot;&gt;2. Use strict mode {#2usestrictmode}&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Standard for ECMAScript 5, adopted by all modern browsers&lt;/li&gt;
+  &lt;li&gt;Include “use strict”; at the beginning of the file (or beginning of a function to limit the strict scope)&lt;/li&gt;
+  &lt;li&gt;Advantages
+    &lt;ul&gt;
+      &lt;li&gt;Safer – limited use of eval()&lt;/li&gt;
+      &lt;li&gt;No accidental global namespace conflicts&lt;/li&gt;
+      &lt;li&gt;Fails loudly – easier to debug&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-leverage-deferreds-for-chaining-promises-3leveragedeferredsforchainingpromises&quot;&gt;3. Leverage deferreds for chaining promises {#3leveragedeferredsforchainingpromises}&lt;/h2&gt;
+
+&lt;h2 id=&quot;4-limit-external-dependencies-and-use-native-javascript-where-possible-4limitexternaldependenciesandusenativejavascriptwherepossible&quot;&gt;4. Limit external dependencies and use native JavaScript where possible {#4limitexternaldependenciesandusenativejavascriptwherepossible}&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Often faster to use native JavaScript functions rather than library equivalent&lt;/li&gt;
+  &lt;li&gt;Dependency versions can be difficult to track and cause namespace conflicts (ex/ jQuery and Underscore’s noConflict() method)&lt;/li&gt;
+  &lt;li&gt;Some of my favorite native helpers:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`property in Object`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`Object.hasOwnProperty`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`Object.keys`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`Object.toFixed`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`Object.toJSON`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`document.getElementByTagName`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`document.getElementById`&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;and lastly, the good old-fashioned &lt;a href=&quot;http://jsperf.com/fastest-array-loops-in-javascript/24&quot; target=&quot;_blank&quot;&gt;for loop&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;5-prototype-classes-instead-of-_extend-where-it-makes-sense-5prototypeclassesinsteadof_extendwhereitmakessense&quot;&gt;5. Prototype classes instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;_.extend&lt;/code&gt; where it makes sense {#5prototypeclassesinsteadof_extendwhereitmakessense}&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Great article &lt;a href=&quot;http://www.2ality.com/2012/08/underscore-extend.html&quot; target=&quot;blank&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;6-add-amd-compliance-by-defining-and-returning-a-module-6addamdcompliancebydefiningandreturningamodule&quot;&gt;6. Add AMD compliance by defining and returning a module {#6addamdcompliancebydefiningandreturningamodule}&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (typeof define == 'function' &amp;amp;&amp;amp; define.amd)
+    define(function() { return Spinner })
+else window.Spinner = Spinner
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;7-abstract-out-configuration--constants-defining-them-upfront-or-in-a-config-file-7abstractoutconfigurationconstantsdefiningthemupfrontorinaconfigfile&quot;&gt;7. Abstract-out configuration &amp;amp; constants, defining them upfront or in a config file {#7abstractoutconfigurationconstantsdefiningthemupfrontorinaconfigfile}&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Well-written libraries should be abstracted a level where they are situationally-independent&lt;/li&gt;
+  &lt;li&gt;Configuration information or constants which vary case-by-case should ideally be removed from library source entirely, or at least referenced from a separate configuration file.&lt;/li&gt;
+  &lt;li&gt;Examples of this in Node’s &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;, or Sencha’s &lt;code class=&quot;highlighter-rouge&quot;&gt;app.json&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;If included in the source, helps visually to use all capital letters, underscore btw/ words (ex/ &lt;code class=&quot;highlighter-rouge&quot;&gt;PLAYLIST*TRACK*VARIANCE_COEFFICIENT&lt;/code&gt; )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;8-comment-clearly-and-publish-with-docco-8commentclearlyandpublishwithdocco&quot;&gt;8. Comment clearly and publish with Docco {#8commentclearlyandpublishwithdocco}&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pages.github.com/&quot; target=&quot;_blank&quot;&gt;Github Pages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jashkenas.github.com/docco/&quot;&gt;Docco&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Examples: &lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;, &lt;a href=&quot;http://underscorejs.org/&quot;&gt;Underscore&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Runner-up: &lt;a href=&quot;http://nevir.github.com/groc/&quot;&gt;Groc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>alex</name></author><category term="JavaScript" /><category term="js" /><category term="software" /><category term="web development" /><category term="webdev" /><summary type="html">Wrap in a self-calling anonymous function Use strict mode Leverage deferreds for chaining promises Limit external dependencies and use native JavaScript where possible Prototype classes instead of _.extend where it makes sense Add AMD compliance by defining and returning a module Abstract-out configuration &amp;amp; constants, defining them upfront or in a config file Comment clearly and publish with Docco</summary></entry><entry><title type="html">Backbone.js, Require.js, SASS Reference &amp;amp; Instructional Material</title><link href="http://localhost:4000/2012/12/backbone-js-require-js-sass-reference-instructional-material/" rel="alternate" type="text/html" title="Backbone.js, Require.js, SASS Reference &amp;amp; Instructional Material" /><published>2012-12-12T09:48:26-08:00</published><updated>2012-12-12T09:48:26-08:00</updated><id>http://localhost:4000/2012/12/backbone-js-require-js-sass-reference-instructional-material</id><content type="html" xml:base="http://localhost:4000/2012/12/backbone-js-require-js-sass-reference-instructional-material/">&lt;p&gt;Hello world!&lt;/p&gt;</content><author><name>alex</name></author><category term="backbone" /><category term="backbonejs" /><category term="css" /><category term="JavaScript" /><category term="js" /><category term="require.js" /><category term="requirejs" /><category term="SASS" /><category term="web development" /><category term="webdev" /><summary type="html">Hello world!</summary></entry><entry><title type="html">JavaScript code standards (ramblings?) from yours truly</title><link href="http://localhost:4000/2012/12/javascript-code-standards-ramblings-from-yours-truly/" rel="alternate" type="text/html" title="JavaScript code standards (ramblings?) from yours truly" /><published>2012-12-03T09:49:19-08:00</published><updated>2012-12-03T09:49:19-08:00</updated><id>http://localhost:4000/2012/12/javascript-code-standards-ramblings-from-yours-truly</id><content type="html" xml:base="http://localhost:4000/2012/12/javascript-code-standards-ramblings-from-yours-truly/">&lt;p&gt;Below are some general guidelines and best practices for JS, HTML, and CSS. Many were gathered from experience and lessons learned (often the hard way). The rest will help ensure consistency throughout your web app.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;general-front-end&quot;&gt;GENERAL FRONT-END&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Naming conventions&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Files which represent ‘classes’ or modules should have first-letter capitalization
+        &lt;ul&gt;
+          &lt;li&gt;&lt;em&gt;ex/  &lt;/em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ActivityCollection&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Referenced libraries should also have first-letter capitalization, except for those with symbolic representations like jQuery ($) and Underscore (_)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As variables can be functions and vice versa, these should both have first-letter capitalization except for the initial letter&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;em&gt;ex/  &lt;/em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;collectActivity&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Semicolons&lt;/strong&gt; – please &lt;strong&gt;use them&lt;/strong&gt; where possible.  Not using semicolons can cause problems with minification.  I’m serious, look it up.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;DOM&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;HTML id tags should be &lt;strong&gt;globally unique &lt;/strong&gt;and contain some indication of the element type (
+        &lt;ul&gt;
+          &lt;li&gt;&lt;em&gt;ex/  &lt;/em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;button id=&quot;activateBtn&quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;HTML classes can be used for efficient CSS styling when applied to multiple elements.  This is often a better option than CSS id references.&lt;/li&gt;
+      &lt;li&gt;Reference element IDs instead of classes in jQuery selectors when possible.  It’s faster.&lt;/li&gt;
+      &lt;li&gt;Scope the jQuery selector inside $el views and where applicable
+        &lt;ul&gt;
+          &lt;li&gt;&lt;em&gt;ex/  &lt;/em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$(&quot;#activateBtn&quot;).toggle();&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Separate out and defer DOM manipulation functions.  These can be deferred using the jQuery wrapper, &lt;code class=&quot;highlighter-rouge&quot;&gt;\_.defer()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;$.promise()&lt;/code&gt;, etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Avoid polluting the global namespace&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;Local variables (variables inside functions used only in that function) should be initialized with var and use ‘new’&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;&lt;em&gt;ex/  &lt;/em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var myVar = new MyObject()&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Make JS functions &lt;strong&gt;first-class citizens&lt;/strong&gt; where possible.  Use function &lt;strong&gt;parameters &lt;/strong&gt;for passing in variables instead of the parent scope.&lt;/p&gt;
+
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;function subtractDates(date1, date2){ var newDate = date1 - date2; return newDate; }&lt;/code&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;em&gt;vs.&lt;/em&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var date1; var date2; function subtractDates(){ return date1 - date 2 }&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Garbage-collect views, models, etc. when no longer needed.  This is especially important in Backbone, and forgetting to destroy these can create ‘ghosts’&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Reference _this_wherever beneficial.  In AJAX there are tricks for doing so:&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var self = this; $.ajax({ url: 'ajax/test.html', success: function(data) { $('#result').html(data); self.addToLog('Load was performed.'); } });&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Practice &lt;strong&gt;asynchronous code &lt;/strong&gt;with callbacks&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;In JS, these are achieved by using a function parameter.&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Include options parameter with success or error attributes in the callback (think of AJAX calls)&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;&lt;em&gt;ex/&lt;/em&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;function getSomeData(id, callback){  ... some time-intensive asyc method with callback(result); inside...  };&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Commenting&lt;/strong&gt;&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;Own your work – include your name and email in JS file headers, along with date created and a short description.  Even if you only wrote a small portion, you have some working knowledge of its contents if ever there is a problem.  See files in client dir for reference.&lt;/li&gt;
+          &lt;li&gt;Functions/variables should be prepended with a short // comment if you think they might be confusing to others or do something funky (all comments are removed during minification anyway, so go wild)&lt;/li&gt;
+          &lt;li&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;//TODO&lt;/code&gt; for writing future tasks to yourself or others&lt;/li&gt;
+          &lt;li&gt;Remove all HTML commenting before build&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Double vs Single Quotes&lt;/strong&gt;
+        &lt;ul&gt;
+          &lt;li&gt;HTML element attributes, including those inlined in JS and jQuery selectors, should all be quotations.  This will help prevent escaping and separate from the below:&lt;/li&gt;
+          &lt;li&gt;JS string literals should be in single quotes
+            &lt;ul&gt;
+              &lt;li&gt;&lt;em&gt;ex/&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;var name = 'Alex'&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;em&gt;ex/&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;html += '&amp;lt;div&amp;gt;';&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;JSON must have double-quotes (you prob already knew this)&lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Remove all logs to console&lt;/strong&gt; prior to build – as well as all other debugging code * &lt;strong&gt;Code Re-Use/Referencing&lt;/strong&gt; * Follow the DRY (&lt;strong&gt;Don’t Repeat Yourself&lt;/strong&gt;) principle&lt;/li&gt;
+              &lt;li&gt;Instead of copying and pasting commonly used functions, create a first-class function for them and reference the hell out of it.&lt;/li&gt;
+              &lt;li&gt;Important for HTML/DOM:  Separate out into templates which can be re-used by JS views.  HTML cannot be properly minified.&lt;/li&gt;
+              &lt;li&gt;Native JS functions are often slow and error-prone.  Use better performing functions if already including a function library such as jQuery or Underscore&lt;/li&gt;
+              &lt;li&gt;&lt;em&gt;ex/&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;$.each()&lt;/code&gt; for an Array or &lt;code class=&quot;highlighter-rouge&quot;&gt;\_.each()&lt;/code&gt; for a Collection instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;for(i = 0; i &amp;lt; blah; i++)&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;em&gt;ex/&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;\_.isUndefined(myVar)&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;if(myVar == undefined)&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;if(myVar.length)&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Read the source&lt;/strong&gt; before including &lt;strong&gt;any&lt;/strong&gt; JS plugins.  This will help you understand how to use it, whether to use it if its bloated, make you write better code, and prevent crappy code from entering the codebase. * Source libraries should not reside in the same directory as non-source.  &lt;strong&gt;Avoid editing the source&lt;/strong&gt; of mature libs, except for removing unneeded &amp;amp; self-contained plugins.  &lt;strong&gt;Override or extend&lt;/strong&gt; source functions locally in the project if need-be, its a much safer alternative.&lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Length/Size&lt;/strong&gt; * Views should not be over 500 lines of code.  Anything beyond that becomes cumbersome, and shouldn’t be loaded all at once for reasons of speed and error-catching&lt;/li&gt;
+              &lt;li&gt;Lines of code shouldn’t be longer than a normal editor full-screen.  This can be seen often when including inline HTML in long strings.  Do everyone the favor of separating-out the string and concatenate where it makes sense with + or a comma * Use switch (case) statements instead of long or nested if()s.&lt;/li&gt;
+              &lt;li&gt;
+                &lt;p&gt;Move/remove unused files from the team working directory.  One way to achieve this is with a .gitignore’d sandbox folder.&amp;lt;/p&amp;gt; 
+ &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;&lt;/p&gt;
+
+                &lt;h2 id=&quot;backbonejs--requirejs-specific&quot;&gt;BACKBONE.JS , REQUIRE.JS SPECIFIC&lt;/h2&gt;
+
+                &lt;ul&gt;
+                  &lt;li&gt;Data should ideally not be extracted from the DOM.  The binding should be one-way for the most part (with the exception of forms/input data and event triggers)&lt;/li&gt;
+                  &lt;li&gt;Each individual view, model, collection, router, etc. should have its own require module (thus &lt;strong&gt;its own file&lt;/strong&gt;).  This is a requirement (no pun intended) of Require and r.js optimization&lt;/li&gt;
+                  &lt;li&gt;Use the prototyped eventAggregator sparingly when it’s necessary to trigger events between views (its an app global)&lt;/li&gt;
+                  &lt;li&gt;Validation logic should reside in the Model or Collection instead of the View layer.  A view can then ask its model/collection to return validity.  Safer, more consistent, and DRY.&lt;/li&gt;
+                  &lt;li&gt;Any external libraries or plugins included must have a path defined in the main.js require config file (must also be shim’ed if it isn’t AMD-friendly).&lt;/li&gt;
+                &lt;/ul&gt;
+
+                &lt;h2 id=&quot;nodejs-specific&quot;&gt;NODE.JS SPECIFIC&lt;/h2&gt;
+
+                &lt;ul&gt;
+                  &lt;li&gt;Create an npm package.json file for every node module (project).&lt;/li&gt;
+                  &lt;li&gt;Include name, version, dependencies, engines, and contributors (see existing for reference&lt;/li&gt;
+                  &lt;li&gt;Dependencies for published node modules can be added to package.json upon install by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;--save&lt;/code&gt; argument&lt;/li&gt;
+                  &lt;li&gt;Maintained package.json enables installation locally or on a remote server by simply run &lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install&lt;/code&gt;from project root (‘node_modules’ should be .gitignore’d)&lt;/li&gt;
+                  &lt;li&gt;If global module used, link locally&lt;/li&gt;
+                  &lt;li&gt;Do not write description comments in headers – this should be included in a README.md inside project root along with runtime instructions&lt;/li&gt;
+                  &lt;li&gt;Determine series/parallel/waterfall needs of processes and code accordingly (async module is particularly helpful for this)&lt;/li&gt;
+                  &lt;li&gt;Use monitor (CLI) or forever-monitor (programatically) if the node server is required to always be running&lt;/li&gt;
+                  &lt;li&gt;Include a logs directory and append error callback data to file&lt;/li&gt;
+                  &lt;li&gt;Reference &lt;code class=&quot;highlighter-rouge&quot;&gt;__dirname&lt;/code&gt; and relative paths for scalability&lt;/li&gt;
+                  &lt;li&gt;Use buffers for small amounts of data to be returned all at once (such as status messages).  Use streams for larger data – tapping into stdout and stderr and use out-of-the-box pipes for stdin to stdout&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>alex</name></author><category term="code standards" /><category term="JavaScript" /><summary type="html">Below are some general guidelines and best practices for JS, HTML, and CSS. Many were gathered from experience and lessons learned (often the hard way). The rest will help ensure consistency throughout your web app.</summary></entry><entry><title type="html">Compiling the Flex 4.5 SDK in Eclipse for the brave &amp;amp; patient</title><link href="http://localhost:4000/2012/09/compiling-the-flex-4-5-sdk-in-eclipse-for-the-brave-patient/" rel="alternate" type="text/html" title="Compiling the Flex 4.5 SDK in Eclipse for the brave &amp;amp; patient" /><published>2012-09-07T10:48:01-07:00</published><updated>2012-09-07T10:48:01-07:00</updated><id>http://localhost:4000/2012/09/compiling-the-flex-4-5-sdk-in-eclipse-for-the-brave-patient</id><content type="html" xml:base="http://localhost:4000/2012/09/compiling-the-flex-4-5-sdk-in-eclipse-for-the-brave-patient/">&lt;p&gt;Unwilling to shell out &lt;a href=&quot;http://www.amazon.com/Adobe-Flash-Builder-4-5-Premium/dp/B004VAOJJ8/ref=pd_cp_sw_0&quot; target=&quot;_blank&quot;&gt;~$600&lt;/a&gt; for Flash Builder 4 Premium or upgrade from my older Flex 3 IDE, my Actionscript development halted &lt;a href=&quot;http://www.cheapjerseysgest.com&quot;&gt;cheap nba jerseys&lt;/a&gt; a couple of years ago. Not wanting to give up completely on Adobe webdev, I gave the open-source Flex SDK a shot and configured my Eclipse environment for good-old Flash. The result wasn’t as painless as I’d thought.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;First download the Flash uninstaller (&lt;a href=&quot;http://helpx.adobe.com/flash-player/kb/uninstall-flash-player-mac-os.html&quot; target=&quot;_blank&quot;&gt;Mac&lt;/a&gt;, &lt;a href=&quot;http://helpx.adobe.com/flash-player/kb/uninstall-flash-player-windows.html&quot; target=&quot;_blank&quot;&gt;Windows&lt;/a&gt;) and . Might want to bookmark or save this blog URL since the Flash loader will make you force-quit all internet browsers.&lt;/p&gt;
+
+&lt;p&gt;After giving Flash the boot, grab the latest Flex SDK from &lt;a href=&quot;http://www.adobe.com/devnet/flex/flex-sdk-download.html&quot; target=&quot;_blank&quot;&gt;Adobe’s developer site&lt;/a&gt;. The SDK includes the compiler we need in our build setup – _sdk_root/bin/mxmlc&amp;lt;/i&amp;gt; – so extract the SDK somewhere you’ll remember. It also includes an installer for the latest debug version &lt;a href=&quot;http://alexehrnschwender.com/2011/10/protect-your-privacy-proxy-traffic-through-ssh/&quot;&gt;privacy:&lt;/a&gt; of Flash inside _sdk_root/runtimes/player/xx.x/your_os&amp;lt;/em&amp;gt;  &lt;/p&gt;
+
+&lt;p&gt;Setting up a Flex SDK &lt;a href=&quot;http://nationalmembersite.com/events/2016-opening-scramble-results/&quot;&gt;2016&lt;/a&gt; project in Eclipse involves creating a builder and passing in custom arguments. The builder simply compiles the application using lib &amp;amp; SDK references and saves it to a SWF file in the bin folder. The arguments &lt;a href=&quot;http://kalbedusunce.com/videolar/serdar-tuncerden-coban-kazandi-hikayesi.html&quot;&gt;Kazand?&lt;/a&gt; look like &lt;em&gt;src/application.mxml &lt;a href=&quot;http://alexehrnschwender.com/2012/01/learn-french-quickly-for-cheap/&quot;&gt;French&lt;/a&gt; -output=bin/application.swf -library-path+=libs/ -target-player=xx.x&lt;/em&gt; with the ‘xx.x’ replaced by the minimum version of Flash required by the SDK you are using. Min versions by SDK are:&lt;/p&gt;
+
+&lt;p&gt;Flex 4.0 SDK – Flash 10.0 minimum Flex 4.5 SDK – Flash 10.2 minimum Flex &lt;a href=&quot;http://www.washingtonredskinsjerseyspop.com&quot;&gt;cheap jerseys&lt;/a&gt; 4.6 SDK – Flash 11.1 minimum&lt;/p&gt;
+
+&lt;p&gt;I won’t go through the Eclipse project setup here as other blogs cover this pretty in-depth. See these for coverage: &lt;a href=&quot;http://www.seanhsmith.com/2010/03/29/flex-for-free-setting-up-the-flex-4-sdk-with-eclipse-ide/&quot; target=&quot;_blank&quot;&gt;barebones walkthrough with screenshots&lt;/a&gt; &lt;a href=&quot;http://www.jakehilton.com/?q=node/27&quot; target=&quot;_blank&quot;&gt;detailed walkthrough&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Scouring Google will lead to some pitfalls searching for up-to-date MXML &amp;amp; AS3 editor plugins for your non-Flash-Builder IDE. To save you the trouble, FlexFormatter is the best plugin I’ve found and lets you customize the format handling of both MXML &lt;a href=&quot;http://alexehrnschwender.com/2012/06/terminal-headache-relief-from-time-saving-bashrc-shortcuts/&quot;&gt;headache&lt;/a&gt; &amp;amp; AS3.&lt;/p&gt;
+
+&lt;p&gt;FlexFormatter links: &lt;a href=&quot;http://boostedautos.com/uncategorized/boostlust-fitment/&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/flexformatter/&quot; target=&quot;_blank&quot;&gt;Google Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://sourceforge.net/projects/flexformatter/&quot; target=&quot;_blank&quot;&gt;SourceForge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://flexformatter.googlecode.com/svn/trunk/FlexFormatter/FlexPrettyPrintCommandUpdateSite&quot; target=&quot;_blank&quot;&gt;Update Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other widely used, open-source plugins are &lt;a href=&quot;http://www.cncheapjerseys.com&quot;&gt;wholesale mlb jerseys&lt;/a&gt; xsd4mxml and Axdt. I’m not sure though if these plugin projects are still being maintained.&lt;/p&gt;
+
+&lt;p&gt;xsd4mxml links: &lt;a href=&quot;http://code.google.com/p/xsd4mxml/&quot; target=&quot;_blank&quot;&gt;Google Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Axdt links:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://marketplace.eclipse.org/content/axdt&quot; target=&quot;_blank&quot;&gt;Eclipse Marketplace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mb0/axdt/&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://svn.codespot.com/a/eclipselabs.org/axdt/trunk/site/&quot; target=&quot;_blank&quot;&gt;Update Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;FDT links:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://marketplace.eclipse.org/content/fdt-1&quot; target=&quot;_blank&quot;&gt;Eclipse Marketplace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://fdt.powerflasher.com/update/fdt5/&quot; target=&quot;_blank&quot;&gt;Update Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While you’re at it you’ll want to gitclone and import &lt;a href=&quot;https://github.com/mikechambers/as3corelib&quot; target=&quot;_blank&quot;&gt;as3corelib&lt;/a&gt; – a practical swiss-army knife of actionscript classes and utilities.&lt;/p&gt;
+
+&lt;p&gt;On the subject, if you’re up for trying a new actionscript &lt;a href=&quot;http://www.cincinnatibengalsjerseyspop.com&quot;&gt;wholesale mlb jerseys&lt;/a&gt; development architecture I’ve been very impressed by &lt;a href=&quot;http://swizframework.org/&quot; target=&quot;_blank&quot;&gt;Swiz Framework&lt;/a&gt;. Swiz uses Inversion of Control through instantiating a BeanProvider class which initially registers controllers, delegates, &lt;a href=&quot;http://www.wholesalejerseysgest.com&quot;&gt;wholesale nfl jerseys&lt;/a&gt; services, models, and presentation-models (declared as prototypes). These can be flexibly injected with bindings throughout the app. It even supports reverse and two-way (bijection?) bindings.&lt;/p&gt;</content><author><name>alex</name></author><category term="eclipse" /><category term="flash" /><category term="flex" /><category term="IDE" /><summary type="html">Unwilling to shell out ~$600 for Flash Builder 4 Premium or upgrade from my older Flex 3 IDE, my Actionscript development halted cheap nba jerseys a couple of years ago. Not wanting to give up completely on Adobe webdev, I gave the open-source Flex SDK a shot and configured my Eclipse environment for good-old Flash. The result wasn’t as painless as I’d thought.</summary></entry><entry><title type="html">Terminal headache relief from time-saving ~/.bashrc shortcuts</title><link href="http://localhost:4000/2012/06/terminal-headache-relief-from-time-saving-bashrc-shortcuts/" rel="alternate" type="text/html" title="Terminal headache relief from time-saving ~/.bashrc shortcuts" /><published>2012-06-08T10:48:52-07:00</published><updated>2012-06-08T10:48:52-07:00</updated><id>http://localhost:4000/2012/06/terminal-headache-relief-from-time-saving-bashrc-shortcuts</id><content type="html" xml:base="http://localhost:4000/2012/06/terminal-headache-relief-from-time-saving-bashrc-shortcuts/">&lt;p&gt;Server-side developers will undoubtedly come across platforms and tools which require heavy use of the *nix terminal. For those who prefer sexy GUIs to the shell, it can get rather annoying searching the web or application man-pages for proper command syntax – especially when you’re forgetful like me. To lessen the pain and boost your productivity, learn to effectively use .bashrc and .bash_profile terminal shortcuts. Make these scripts your friends and you’ll find yourself quickly becoming a terminal pro. &lt;!--more--&gt; Managing an Ubuntu server and developing on a Mac, I’ve found myself repeatedly typing the same commands to do things like alter configurations, start/stop apache, install updates, and sync changes remotely.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://piecebank.net/2009/03/29/%e3%80%90tv%e5%87%ba%e6%bc%94%e6%83%85%e5%a0%b1%e3%80%91%e7%ab%b9%e3%81%ae%e5%9b%9b%e5%ad%a3%e3%81%95%e3%82%93/&quot;&gt;【TV出演情報】竹の四季さん&lt;/a&gt; While &lt;a href=&quot;http://www.theartoftravelbytammycane.com/slider/slider2/&quot;&gt;_Slider2&lt;/a&gt; I was familiar with &lt;a href=&quot;http://www.cheapelitejerseys.us.com&quot;&gt;wholesale nba jerseys&lt;/a&gt; editing environment variables, only recently did I begin to include common &lt;a href=&quot;http://alexehrnschwender.com/2011/10/protect-your-privacy-proxy-traffic-through-ssh/&quot;&gt;Protect&lt;/a&gt; commands as single-word aliases in .bashrc. Editing and appending to your user’s bashrc configuration is easy.  To view and edit we can use the built-in vi editor:&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;!-- Crayon Syntax Highlighter v_2.7.2_beta --&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;div id=&quot;crayon-5898940f3ab27006014900&quot; class=&quot;crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate&quot; data-settings=&quot; minimize scroll-mouseover&quot; style=&quot; max-width: 800px; margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+
+        &amp;lt;div class=&quot;crayon-toolbar&quot; data-settings=&quot; show&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;span class=&quot;crayon-title&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&quot;crayon-tools&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-nums-button&quot; title=&quot;Toggle Line Numbers&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-plain-button&quot; title=&quot;Toggle Plain Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-wrap-button&quot; title=&quot;Toggle Line Wrap&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-expand-button&quot; title=&quot;Expand Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-copy-button&quot; title=&quot;Copy&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-popup-button&quot; title=&quot;Open Code In New Window&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span class=&quot;crayon-language&quot;&amp;gt;Shell&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-info&quot; style=&quot;min-height: 16.8px !important; line-height: 16.8px !important;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-plain-wrap&quot;&amp;gt;&amp;lt;textarea wrap=&quot;soft&quot; class=&quot;crayon-plain print-no&quot; data-settings=&quot;dblclick&quot; readonly style=&quot;-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;vi ~/.bashrc&amp;lt;/textarea&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;crayon-main&quot; style=&quot;max-width: 800px&quot;&gt;
+  &lt;table class=&quot;crayon-table&quot;&gt;
+    &lt;tr class=&quot;crayon-row&quot;&gt;
+      &lt;td class=&quot;crayon-nums &quot;&gt;
+        &lt;div class=&quot;crayon-nums-content&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            1
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      
+      &lt;td class=&quot;crayon-code&quot;&gt;
+        &lt;div class=&quot;crayon-pre&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab27006014900-1&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;vi&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;.bashrc&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;!-- [Format Time: 0.0009 seconds] --&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;To quickly append an alias (and enable its use instantly) simply enter:&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;!-- Crayon Syntax Highlighter v_2.7.2_beta --&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;div id=&quot;crayon-5898940f3ab4f619805610&quot; class=&quot;crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate&quot; data-settings=&quot; minimize scroll-mouseover&quot; style=&quot; max-width: 800px; margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+
+        &amp;lt;div class=&quot;crayon-toolbar&quot; data-settings=&quot; show&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;span class=&quot;crayon-title&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&quot;crayon-tools&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-nums-button&quot; title=&quot;Toggle Line Numbers&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-plain-button&quot; title=&quot;Toggle Plain Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-wrap-button&quot; title=&quot;Toggle Line Wrap&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-expand-button&quot; title=&quot;Expand Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-copy-button&quot; title=&quot;Copy&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-popup-button&quot; title=&quot;Open Code In New Window&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span class=&quot;crayon-language&quot;&amp;gt;Shell&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-info&quot; style=&quot;min-height: 16.8px !important; line-height: 16.8px !important;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-plain-wrap&quot;&amp;gt;&amp;lt;textarea wrap=&quot;soft&quot; class=&quot;crayon-plain print-no&quot; data-settings=&quot;dblclick&quot; readonly style=&quot;-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;echo ‘alias SHORTCUTNAME=”ANNOYING COMMAND”‘ » ~/.bashrc &amp;amp;&amp;amp; . ~/.bashrc&amp;lt;/textarea&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;crayon-main&quot; style=&quot;max-width: 800px&quot;&gt;
+  &lt;table class=&quot;crayon-table&quot;&gt;
+    &lt;tr class=&quot;crayon-row&quot;&gt;
+      &lt;td class=&quot;crayon-nums &quot;&gt;
+        &lt;div class=&quot;crayon-nums-content&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            1
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      
+      &lt;td class=&quot;crayon-code&quot;&gt;
+        &lt;div class=&quot;crayon-pre&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab4f619805610-1&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;alias SHORTCUTNAME=&amp;#8221;ANNOYING COMMAND&amp;#8221;&amp;#8216;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;.bashrc&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;.bashrc&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;!-- [Format Time: 0.0013 seconds] --&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;You can also chain commands using a semicolon, for instance:&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;!-- Crayon Syntax Highlighter v_2.7.2_beta --&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;div id=&quot;crayon-5898940f3ab65383322274&quot; class=&quot;crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate&quot; data-settings=&quot; minimize scroll-mouseover&quot; style=&quot; max-width: 800px; margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+
+        &amp;lt;div class=&quot;crayon-toolbar&quot; data-settings=&quot; show&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;span class=&quot;crayon-title&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&quot;crayon-tools&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-nums-button&quot; title=&quot;Toggle Line Numbers&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-plain-button&quot; title=&quot;Toggle Plain Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-wrap-button&quot; title=&quot;Toggle Line Wrap&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-expand-button&quot; title=&quot;Expand Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-copy-button&quot; title=&quot;Copy&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-popup-button&quot; title=&quot;Open Code In New Window&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span class=&quot;crayon-language&quot;&amp;gt;Shell&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-info&quot; style=&quot;min-height: 16.8px !important; line-height: 16.8px !important;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-plain-wrap&quot;&amp;gt;&amp;lt;textarea wrap=&quot;soft&quot; class=&quot;crayon-plain print-no&quot; data-settings=&quot;dblclick&quot; readonly style=&quot;-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;example&quot;&gt;Example&lt;/h1&gt;
+
+&lt;p&gt;alias SHORTCUT=”COMMAND1;COMMAND2″&lt;/p&gt;
+
+&lt;h1 id=&quot;gets-updates-and-upgrades-in-ubuntu&quot;&gt;gets updates and upgrades in Ubuntu&lt;/h1&gt;
+
+&lt;p&gt;alias updateUpgrade=”sudo apt-get update; sudo apt-get &lt;a href=&quot;http://www.vibroveneta.it/hello-world-2/&quot;&gt;Hello&lt;/a&gt; upgrade”&amp;lt;/textarea&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;crayon-main&quot; style=&quot;max-width: 800px&quot;&gt;
+  &lt;table class=&quot;crayon-table&quot;&gt;
+    &lt;tr class=&quot;crayon-row&quot;&gt;
+      &lt;td class=&quot;crayon-nums &quot;&gt;
+        &lt;div class=&quot;crayon-nums-content&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            1
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            2
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            3
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            4
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            5
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      
+      &lt;td class=&quot;crayon-code&quot;&gt;
+        &lt;div class=&quot;crayon-pre&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab65383322274-1&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#Example &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab65383322274-2&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;SHORTCUT&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;COMMAND1;COMMAND2&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab65383322274-3&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab65383322274-4&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#gets updates and upgrades in Ubuntu &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab65383322274-5&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;updateUpgrade&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;sudo apt-get update; sudo apt-get upgrade&amp;#8221;&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;!-- [Format Time: 0.0012 seconds] --&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Below are some &lt;a href=&quot;http://www.thisislavergne.com/2010/01/06/from-the-city-lavergne-announcements/&quot;&gt;LaVergne&lt;/a&gt; simple examples I’ve included my .bashrc configuration file:&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;!-- Crayon Syntax Highlighter v_2.7.2_beta --&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;div id=&quot;crayon-5898940f3ab7c826601113&quot; class=&quot;crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate&quot; data-settings=&quot; minimize scroll-mouseover&quot; style=&quot; max-width: 800px; margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+
+        &amp;lt;div class=&quot;crayon-toolbar&quot; data-settings=&quot; show&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;span class=&quot;crayon-title&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&quot;crayon-tools&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-nums-button&quot; title=&quot;Toggle Line Numbers&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-plain-button&quot; title=&quot;Toggle Plain Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-wrap-button&quot; title=&quot;Toggle Line Wrap&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-expand-button&quot; title=&quot;Expand Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-copy-button&quot; title=&quot;Copy&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-popup-button&quot; title=&quot;Open Code In New Window&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span class=&quot;crayon-language&quot;&amp;gt;Shell&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-info&quot; style=&quot;min-height: 16.8px !important; line-height: 16.8px !important;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-plain-wrap&quot;&amp;gt;&amp;lt;textarea wrap=&quot;soft&quot; class=&quot;crayon-plain print-no&quot; data-settings=&quot;dblclick&quot; readonly style=&quot;-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;checkin-svn-project&quot;&gt;checkin SVN project&lt;/h1&gt;
+
+&lt;p&gt;alias svnIn=’/usr/local/bin/svn ci’&lt;/p&gt;
+
+&lt;h1 id=&quot;retrieve-svn-logs&quot;&gt;retrieve SVN logs&lt;/h1&gt;
+
+&lt;p&gt;alias svnlog=’svn log -gvr 1:head’ &lt;a href=&quot;http://alexehrnschwender.com/2012/01/learn-french-quickly-for-cheap/&quot;&gt;quickly&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;ref-zend-framework-script-for-php-projects&quot;&gt;ref Zend Framework script for PHP projects&lt;/h1&gt;
+
+&lt;p&gt;alias zf=’/Applications/MAMP/svn/zendframework/trunk/bin/zf.sh’&lt;/p&gt;
+
+&lt;h1 id=&quot;ref-local-development-mysql-cheap-mlb-jerseys&quot;&gt;ref local development mySQL &lt;a href=&quot;http://www.cheapjerseyslan.com&quot;&gt;cheap mlb jerseys&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;alias mampSQL=’/Applications/MAMP/Library/bin/mysql’&lt;/p&gt;
+
+&lt;h1 id=&quot;ref-ios-simulator-on-macosx-with-developer-tools-installed&quot;&gt;ref iOS simulator on MacOSX with Developer Tools installed&lt;/h1&gt;
+
+&lt;p&gt;alias iPhone=’/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app’&amp;lt;/textarea&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;crayon-main&quot; style=&quot;max-width: 800px&quot;&gt;
+  &lt;table class=&quot;crayon-table&quot;&gt;
+    &lt;tr class=&quot;crayon-row&quot;&gt;
+      &lt;td class=&quot;crayon-nums &quot;&gt;
+        &lt;div class=&quot;crayon-nums-content&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            1
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            2
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            3
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            4
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            5
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            6
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            7
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            8
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            9
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            10
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            11
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            12
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            13
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            14
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      
+      &lt;td class=&quot;crayon-code&quot;&gt;
+        &lt;div class=&quot;crayon-pre&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-1&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#checkin SVN project &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-2&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;svnIn&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;/usr/local/bin/svn ci&amp;#8217;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-3&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-4&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#retrieve SVN logs &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-5&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;svnlog&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;svn log -gvr 1:head&amp;#8217;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-6&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-7&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#ref Zend Framework script for PHP projects&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-8&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zf&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;/Applications/MAMP/svn/zendframework/trunk/bin/zf.sh&amp;#8217;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-9&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-10&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#ref local development mySQL &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-11&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;mampSQL&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;/Applications/MAMP/Library/bin/mysql&amp;#8217;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-12&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab7c826601113-13&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#ref iOS simulator on MacOSX with Developer Tools installed&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab7c826601113-14&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;iPhone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app&amp;#8217;&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;!-- [Format Time: 0.0029 seconds] --&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Some more complicated (but quite useful) commands I will not explain here are:&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;!-- Crayon Syntax Highlighter v_2.7.2_beta --&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;div id=&quot;crayon-5898940f3ab91344318984&quot; class=&quot;crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate&quot; data-settings=&quot; minimize scroll-mouseover&quot; style=&quot; max-width: 800px; margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+
+        &amp;lt;div class=&quot;crayon-toolbar&quot; data-settings=&quot; show&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;span class=&quot;crayon-title&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&quot;crayon-tools&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-nums-button&quot; title=&quot;Toggle Line Numbers&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-plain-button&quot; title=&quot;Toggle Plain Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-wrap-button&quot; title=&quot;Toggle Line Wrap&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-expand-button&quot; title=&quot;Expand Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-copy-button&quot; title=&quot;Copy&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-popup-button&quot; title=&quot;Open Code In New Window&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span class=&quot;crayon-language&quot;&amp;gt;Shell&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-info&quot; style=&quot;min-height: 16.8px !important; line-height: 16.8px !important;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-plain-wrap&quot;&amp;gt;&amp;lt;textarea wrap=&quot;soft&quot; class=&quot;crayon-plain print-no&quot; data-settings=&quot;dblclick&quot; readonly style=&quot;-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;zips-a-file-or-folder&quot;&gt;zips a file or folder&lt;/h1&gt;
+
+&lt;p&gt;zipMe () { zip -r “$1”.zip “$1” ; }&lt;/p&gt;
+
+&lt;h1 id=&quot;finds-file-in-current-directory-cheap-jerseys&quot;&gt;finds file in current directory &lt;a href=&quot;http://www.cheapprojerseys.com&quot;&gt;cheap jerseys&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;findMe () { /usr/bin/find . -name “$@” ; }&lt;/p&gt;
+
+&lt;h1 id=&quot;checkout-svn-project&quot;&gt;checkout SVN project&lt;/h1&gt;
+
+&lt;p&gt;svnOut () { /usr/local/bin/svn co file://$svnDir/$1/trunk . ; }&amp;lt;/textarea&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;crayon-main&quot; style=&quot;max-width: 800px&quot;&gt;
+  &lt;table class=&quot;crayon-table&quot;&gt;
+    &lt;tr class=&quot;crayon-row&quot;&gt;
+      &lt;td class=&quot;crayon-nums &quot;&gt;
+        &lt;div class=&quot;crayon-nums-content&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            1
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            2
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            3
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            4
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            5
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            6
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            7
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            8
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      
+      &lt;td class=&quot;crayon-code&quot;&gt;
+        &lt;div class=&quot;crayon-pre&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab91344318984-1&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#zips a file or folder &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab91344318984-2&quot;&gt;
+            &lt;span class=&quot;crayon-e&quot;&gt;zipMe&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;$1&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;.zip&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;$1&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab91344318984-3&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab91344318984-4&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#finds file in current directory &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab91344318984-5&quot;&gt;
+            &lt;span class=&quot;crayon-e&quot;&gt;findMe&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;usr&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-r&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;$@&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab91344318984-6&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3ab91344318984-7&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#checkout SVN project &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3ab91344318984-8&quot;&gt;
+            &lt;span class=&quot;crayon-e&quot;&gt;svnOut&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;usr&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;svn &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;co &lt;/span&gt;&lt;span class=&quot;crayon-r&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;$svnDir&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;trunk&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;!-- [Format Time: 0.0054 seconds] --&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;And some less-used but cool shorcuts:&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;!-- Crayon Syntax Highlighter v_2.7.2_beta --&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;div id=&quot;crayon-5898940f3aba7969201964&quot; class=&quot;crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate&quot; data-settings=&quot; minimize scroll-mouseover&quot; style=&quot; max-width: 800px; margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+
+        &amp;lt;div class=&quot;crayon-toolbar&quot; data-settings=&quot; show&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;span class=&quot;crayon-title&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&quot;crayon-tools&quot; style=&quot;font-size: 12px !important;height: 18px !important; line-height: 18px !important;&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-nums-button&quot; title=&quot;Toggle Line Numbers&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-plain-button&quot; title=&quot;Toggle Plain Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-wrap-button&quot; title=&quot;Toggle Line Wrap&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-expand-button&quot; title=&quot;Expand Code&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-copy-button&quot; title=&quot;Copy&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;crayon-button crayon-popup-button&quot; title=&quot;Open Code In New Window&quot;&amp;gt;&amp;lt;div class=&quot;crayon-button-icon&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span class=&quot;crayon-language&quot;&amp;gt;Shell&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-info&quot; style=&quot;min-height: 16.8px !important; line-height: 16.8px !important;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;crayon-plain-wrap&quot;&amp;gt;&amp;lt;textarea wrap=&quot;soft&quot; class=&quot;crayon-plain print-no&quot; data-settings=&quot;dblclick&quot; readonly style=&quot;-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;lookup-cheap-mlb-jerseys-a-word-in-mac-dictionary&quot;&gt;lookup &lt;a href=&quot;http://www.sandiegochargersjerseyspop.com&quot;&gt;cheap mlb jerseys&lt;/a&gt; a word in Mac Dictionary&lt;/h1&gt;
+
+&lt;p&gt;dictionary () { open dict:///”$@” ; }&lt;/p&gt;
+
+&lt;h1 id=&quot;show-hidden-files-in-mac-finder&quot;&gt;show hidden files in Mac Finder&lt;/h1&gt;
+
+&lt;p&gt;alias showHidden=’defaults write com.apple.finder ShowAllFiles TRUE’&lt;/p&gt;
+
+&lt;h1 id=&quot;hide-hidden-files-in-mac-finder&quot;&gt;hide hidden files in Mac Finder&lt;/h1&gt;
+
+&lt;p&gt;alias hideHidden=’defaults write &lt;a href=&quot;http://www.dallascowboysjerseyspop.com&quot;&gt;wholesale jerseys&lt;/a&gt; com.apple.finder ShowAllFiles FALSE’&lt;/p&gt;
+
+&lt;h1 id=&quot;pretty-json-with-indents-and-line-breaks&quot;&gt;pretty json with indents and line breaks&lt;/h1&gt;
+
+&lt;p&gt;alias json-prettify=’python -mjson.tool’&lt;/p&gt;
+
+&lt;h1 id=&quot;list-and-sort-large-files&quot;&gt;list and sort large files&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;alias filesizes=’du -ksh */&lt;/td&gt;
+      &lt;td&gt;sort -nr’&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;find-and-replace-recursively-inside-files-of-a-directory&quot;&gt;find and replace recursively inside files of a directory&lt;/h1&gt;
+
+&lt;p&gt;alias find-replace=”find . -type f -name ‘&lt;em&gt;.&lt;/em&gt;‘ -exec sed -i ” s/{print $2}/{print $3}/ {} +”&lt;/p&gt;
+
+&lt;h1 id=&quot;test-internet-connection-speed&quot;&gt;test internet connection speed&lt;/h1&gt;
+
+&lt;p&gt;alias ispeed=’wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip’&lt;/p&gt;
+
+&lt;h1 id=&quot;recursively-change-permissions-on-all-files-in-a-directory&quot;&gt;recursively change permissions on all files in a directory&lt;/h1&gt;
+
+&lt;p&gt;alias 644.=’find . -type f -exec chmod 644 {} \;’&lt;/p&gt;
+
+&lt;h1 id=&quot;print-a-list-of-all-tput-colors-with-their-numerical-ids&quot;&gt;print a list of all tput colors with their numerical ids&lt;/h1&gt;
+
+&lt;p&gt;alias print-colors=’( x=&lt;code class=&quot;highlighter-rouge&quot;&gt;tput op&lt;/code&gt; y=&lt;code class=&quot;highlighter-rouge&quot;&gt;printf %$((${COLUMNS}-6))s&lt;/code&gt;;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} &lt;code class=&quot;highlighter-rouge&quot;&gt;tput setaf $i;tput setab $i&lt;/code&gt;${y// /=}$x;done; )’&amp;lt;/textarea&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;crayon-main&quot; style=&quot;max-width: 800px&quot;&gt;
+  &lt;table class=&quot;crayon-table&quot;&gt;
+    &lt;tr class=&quot;crayon-row&quot;&gt;
+      &lt;td class=&quot;crayon-nums &quot;&gt;
+        &lt;div class=&quot;crayon-nums-content&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            1
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            2
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            3
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            4
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            5
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            6
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            7
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            8
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            9
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            10
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            11
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            12
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            13
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            14
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            15
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            16
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            17
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            18
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            19
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            20
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            21
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            22
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            23
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            24
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num&quot;&gt;
+            25
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-num crayon-striped-num&quot;&gt;
+            26
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+      
+      &lt;td class=&quot;crayon-code&quot;&gt;
+        &lt;div class=&quot;crayon-pre&quot; style=&quot;font-size: 12px !important;line-height: 15px !important&quot;&gt;
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-1&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#lookup a word in Mac Dictionary&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-2&quot;&gt;
+            &lt;span class=&quot;crayon-e&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;open &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;$@&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-3&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-4&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#show hidden files in Mac Finder&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-5&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;showHidden&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;defaults write com.apple.finder ShowAllFiles TRUE&amp;#8217;&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-6&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-7&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;#hide hidden files in Mac Finder&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-8&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;hideHidden&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;defaults write com.apple.finder ShowAllFiles FALSE&amp;#8217;&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-9&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-10&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;# pretty json with indents and line breaks&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-11&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;prettify&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;python -mjson.tool&amp;#8217;&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-12&quot;&gt;
+            &amp;nbsp;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-13&quot;&gt;
+            &lt;span class=&quot;crayon-c&quot;&gt;# list and sort large files&lt;/span&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-14&quot;&gt;
+            &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;filesizes&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;du -ksh &lt;em&gt;/ | sort -nr&amp;#8217;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt; 
+            
+            &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-15&quot;&gt;
+              &amp;nbsp;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-16&quot;&gt;
+              &lt;span class=&quot;crayon-c&quot;&gt;# find and replace recursively inside files of a directory&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-17&quot;&gt;
+              &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-r&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;find . -type f -name &amp;#8216;&amp;lt;/em&amp;gt;.*&amp;#8217; -exec sed -i &amp;#8221; s/{print $2}/{print $3}/ {} +&amp;#8221;&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-18&quot;&gt;
+              &amp;nbsp;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-19&quot;&gt;
+              &lt;span class=&quot;crayon-c&quot;&gt;# test internet connection speed&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-20&quot;&gt;
+              &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;ispeed&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip&amp;#8217;&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-21&quot;&gt;
+              &amp;nbsp;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-22&quot;&gt;
+              &lt;span class=&quot;crayon-c&quot;&gt;# recursively change permissions on all files in a directory&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-23&quot;&gt;
+              &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;644.&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;find . -type f -exec chmod 644 {} \;&amp;#8217;&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-24&quot;&gt;
+              &amp;nbsp;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line&quot; id=&quot;crayon-5898940f3aba7969201964-25&quot;&gt;
+              &lt;span class=&quot;crayon-c&quot;&gt;# print a list of all tput colors with their numerical ids&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;crayon-line crayon-striped-line&quot; id=&quot;crayon-5898940f3aba7969201964-26&quot;&gt;
+              &lt;span class=&quot;crayon-r&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;crayon-h&quot;&gt; &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;( x=&lt;code&gt;tput op&lt;/code&gt; y=&lt;code&gt;printf %$((${COLUMNS}-6))s&lt;/code&gt;;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} &lt;code&gt;tput setaf $i;tput setab $i&lt;/code&gt;${y// /=}$x;done; )&amp;#8217;&lt;/span&gt;
+            &lt;/div&gt;&amp;lt;/div&amp;gt; &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; 
+            
+            &lt;p&gt;
+              &lt;!-- [Format Time: 0.0060 seconds] --&gt;
+            &lt;/p&gt;&amp;lt;/p&amp;gt;
+&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</content><author><name>alex</name></author><category term=".bash_profile" /><category term=".bashrc" /><category term="bash" /><category term="IDE" /><category term="Unix" /><summary type="html">Server-side developers will undoubtedly come across platforms and tools which require heavy use of the *nix terminal. For those who prefer sexy GUIs to the shell, it can get rather annoying searching the web or application man-pages for proper command syntax – especially when you’re forgetful like me. To lessen the pain and boost your productivity, learn to effectively use .bashrc and .bash_profile terminal shortcuts. Make these scripts your friends and you’ll find yourself quickly becoming a terminal pro. Managing an Ubuntu server and developing on a Mac, I’ve found myself repeatedly typing the same commands to do things like alter configurations, start/stop apache, install updates, and sync changes remotely.</summary></entry><entry><title type="html">Learn French quickly &amp;amp; inexpensively</title><link href="http://localhost:4000/2012/01/learn-french-quickly-for-cheap/" rel="alternate" type="text/html" title="Learn French quickly &amp;amp; inexpensively" /><published>2012-01-07T09:47:27-08:00</published><updated>2012-01-07T09:47:27-08:00</updated><id>http://localhost:4000/2012/01/learn-french-quickly-for-cheap</id><content type="html" xml:base="http://localhost:4000/2012/01/learn-french-quickly-for-cheap/">&lt;p&gt;So one of your New Year’s resolutions was to pick up a foreign language. Whether it be for a planned vacation, connection with a relative, &lt;a href=&quot;http://www.teny-spb.ru/uncategorized/orebrennye-teny.html&quot;&gt;тэны&lt;/a&gt; career opportunity, picking up girls, etc. learning a new language &lt;a href=&quot;http://www.wholesalenfljerseysgest.com&quot;&gt;cheap jerseys&lt;/a&gt; can &lt;a href=&quot;http://www.china-cheapjerseys.us.com&quot;&gt;wholesale mlb jerseys&lt;/a&gt; be daunting but rewarding. And best yet, free. &lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;My situation:&lt;/em&gt; given roughly 2 months notice for a new project manager role based out of a manufacturing &lt;a href=&quot;https://www.cheapjerseyschina.top&quot;&gt;cheap nfl jerseys&lt;/a&gt; town in eastern France.  One of those months would be spent traveling and studying in China.  Four years of Spanish taken in high school but squat French. &lt;em&gt;The goal:&lt;/em&gt; &lt;a href=&quot;http://pneusensolde.ca/proin-gravida-nibh-vel-velit-auctor-aluet-2/&quot;&gt;velit&lt;/a&gt; to become as adept at listening and comprehension as possible &lt;a href=&quot;http://educatravel.com/pf-4/&quot;&gt;pf-4&lt;/a&gt; using after-work-hours in that &lt;a href=&quot;https://www.miamidolphinsjerseyspop.com&quot;&gt;Wholesale Miami Dolphins Jerseys&lt;/a&gt; short window.  Pressure and deadlines are excellent motivators – &lt;a href=&quot;https://www.wholesalejerseyschina.top&quot;&gt;cheap nba jerseys&lt;/a&gt; and in a short time I would need to co-exist in a small &lt;a href=&quot;http://workhaus.bz/2805-2/&quot;&gt;Networking&lt;/a&gt; town with sparse English fluency.  Below are some resources I found essential. &lt;strong&gt;iOS Apps&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.duolingo.com/&quot; target=&quot;_blank&quot;&gt;DuoLingo&lt;/a&gt; (personal favorite)&lt;/li&gt;
+  &lt;li&gt;French.&lt;/li&gt;
+  &lt;li&gt;FREE French Tutor&lt;/li&gt;
+  &lt;li&gt;SpeakEasy French Lite&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Audiobooks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.audiocite.net/&quot;&gt;http://www.audiocite.net/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.booksshouldbefree.com/language/French&quot;&gt;http://www.booksshouldbefree.com/language/French&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Podcasts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://frenchpod.com/&quot;&gt;http://frenchpod.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://dailyfrenchpod.com/&quot;&gt;http://dailyfrenchpod.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://learnfrenchbypodcast.com/&quot;&gt;http://learnfrenchbypodcast.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Instructional Videos&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://oli.web.cmu.edu/openlearning/forstudents/freecourses/french&quot;&gt;French 1 &amp;amp; 2 Courses from Carnegie Melon&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.learner.org/resources/series83.html?pop=yes&amp;amp;pid=687&quot;&gt;French in Action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.bbc.co.uk/languages/french/mafrance/&quot;&gt;Ma France&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Foreign Films&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Amelie&lt;/li&gt;
+  &lt;li&gt;practically anything with Jean Reno&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;News Radio (intermediate)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rfi.fr/&quot; title=&quot;RFI French news&quot;&gt;RFI.fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Local Clubs &amp;amp; Gatherings (intermediate)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.afphila.com/&quot;&gt;AF Phila&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;  _The result:  _Basic comprehension and speaking in only 2 months. These skills increased greatly after relocating to France &lt;a href=&quot;http://alexehrnschwender.com/2011/10/protect-your-privacy-proxy-traffic-through-ssh/&quot;&gt;proxy&lt;/a&gt; and befriending some helpful locals.  Maintenant j’aime parler français!&lt;/p&gt;</content><author><name>alex</name></author><category term="cheap French resources" /><category term="French" /><category term="learn French" /><summary type="html">So one of your New Year’s resolutions was to pick up a foreign language. Whether it be for a planned vacation, connection with a relative, тэны career opportunity, picking up girls, etc. learning a new language cheap jerseys can wholesale mlb jerseys be daunting but rewarding. And best yet, free.</summary></entry></feed>

@@ -1,0 +1,89 @@
+<p>A little while back, the team at <a href="http://tastemakerx.com">TastemakerX</a> decided <a href="https://trello.com/">Trello</a> was not cutting it for tracking and managing bugs. It should come as no surprise that any company requires more sophisticated project management tools as it grows and evolves. Instead of blindly rolling out <a href="https://github.com/">github</a>, the startup norm, we took a systems analysis approach to the problem. Below is our approach and findings.</p>
+
+<!--more-->
+
+<p> </p>
+
+<p>Defining the Problem</p>
+
+<p>—————————</p>
+
+<p>Don’t get me wrong. I find Trello to be excellent for its sheer simplicity – every developer’s dream with regards to PM tools.  Its @mention functionality is poweful and the left-to-right workflow with stack-ranked cards just makes sense.  Its simplicity excels in small teams ( under around 6 people ), or for one-off or niche purposes, and does not pretend to be a full PM suite.  For anything larger, however, we found Trello lacks the <strong>hierarchical depth</strong> and <strong>standardization</strong> needed to remain effective and stay on-task.</p>
+
+<p>By <strong>hierarchical depth</strong> I’m loosely referring to the Agile concepts of epic, story, and task.</p>
+
+<p>Trello uses a one-size-fits-all approach to cards which can mute the importance and relative weight of tasks needing attention.</p>
+
+<p>Trying to use cards at the task-level means a ton of cards can stack up in each column, versus using at the story-level means a ton of back-and-forth comments, attachments, checkboxes, and headache.</p>
+
+<p>It gets even more complicated with bugs &amp; QA feedback which often are tied to the story which needs to pass.</p>
+
+<p>As with tasks, should these be checkboxes as well? What if they fit into more than one story? What if the story has already shipped?</p>
+
+<p>By <strong>standardization</strong> I’m referring to common pieces of data needed in an easily scannable and filterable form.</p>
+
+<p>When it comes to bugs, every developer needs certain core information: environment/browser bug was found on, steps to reproduce, and intended functionality.</p>
+
+<p>With one free-form text area, it’s often difficult to parse this information quickly, and search is the only filtering medium.</p>
+
+<p>This is especially a nightmare when the team is in a hurry end-of-spring – where the QA feedback can be as detailed or as “margin is 10px too tall” to “shit’s broken”.</p>
+
+<p> </p>
+
+<p>Note: I highly recommend checking out some of the chrome extension plugins such as <a href="https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje">Scrum for Trello</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>Gathering requirements</p>
+
+<p>—————————</p>
+
+<p>With the overall problem in mind, we each listed our requirements for a bug mgmt solution.</p>
+
+<p>To be fair, these requirements were taken from every stakeholder – developers, QA, Project &amp; Product Management.</p>
+
+<p>What we came up with were:</p>
+
+<p>MUST HAVES</p>
+
+<p>—————————-</p>
+
+<ul>
+  <li>Ability to merge bugs or bind them as related</li>
+  <li>Separate but integrated with Trello (or whatever sprint task mgmt/estimation tool)</li>
+  <li>Can upload screenshots easily and attach files</li>
+  <li>Can tag/label bugs and assign, prioritizeable</li>
+  <li>Logs and bug archive with timestamps, filterable, shows who closed and when</li>
+  <li>Opt in notifications per status (ex/ I am notified when new or pushed back)</li>
+  <li>Can comment on specific activity items (not just one long stream of comments not tied to anything)</li>
+  <li>Analytics (how fast are they piling up? how fast are they being closed? how has this changed over sprint cycles?)</li>
+</ul>
+
+<p> </p>
+
+<p>NICE TO HAVES</p>
+
+<p>—————————-</p>
+
+<ul>
+  <li>Can tie source code or specific commit to a bug that it fixes</li>
+  <li>Ability to write in markdown format (have you ever tried copy/pasting code into trello? don’t.)</li>
+  <li>Can close or change bug status from command line (ideally from a specific pull request)</li>
+  <li>Notification system ideally through growl, an app, browser extension, or something which isn’t email</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<p>Weighing alternatives</p>
+
+<p>—————————–</p>
+
+<p>Decision and Roll-out</p>
+
+<p>——————————</p>
+
+<p> </p>

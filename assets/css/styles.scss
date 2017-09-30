@@ -1,8 +1,13 @@
+---
+---
+
+@import "{{ site.theme }}";
+
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
 body {
   padding:50px;
-  font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:14px/1.5 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
   font-weight:300;
 }
@@ -110,6 +115,11 @@ header {
 
 }
 
+.header-link {
+  color: #222;
+  font-weight: inherit;
+}
+
 .wrapper.nav-center {
     text-align: center;
 }
@@ -134,10 +144,14 @@ header {
     margin:0 auto;
     padding-left:0;
     float:left;
+    background: none;
+    border: none;
 }
 
 #socialIconSet li {
     display:inline;
+    width: auto;
+    border: none;
 }
 
 .iconWrapper {
@@ -434,4 +448,5 @@ article footer p.gotop {
 }
 
 .mb20 { margin-bottom:20px; }
+
 
