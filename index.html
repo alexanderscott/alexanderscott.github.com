@@ -10,10 +10,11 @@
                 software, music, engineering, javascript,
                 Slice Is Right, Music To Lose It, Musictolose.it, cloudjams, tabhammer, alexanderscott">
 
-    <title>Blog &amp; Project Porfolio</title>
+    <title>Alex Ehrnschwender</title>
     
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/pygment_trac.css">
+    <!--link href="https://fonts.googleapis.com/css?family=Elsie" rel="stylesheet"-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,86 +25,30 @@
     
   </head>
   <body>
-    <div class="wrapper">
-      <header id="headerEl">
-      <a class="navLink" href="/home.html"><h2>Alex Ehrnschwender</h2></a>
-        <p>software engineer & music geek</p>
-        <ul id="socialIconSet">
-            <li><div class="iconWrapper"><a href="http://github.com/alexanderscott" class="social-icon github-gray" target="_blank"></a></div></li>
-            <li><div class="iconWrapper"><a href="http://twitter.com/ehrndog" class="social-icon twitter-gray" target="_blank"></a></div></li>
-            <li><div class="iconWrapper" style="margin-left:10px;"><a href="http://www.linkedin.com/in/alexehrnschwender" class="social-icon linkedin-gray" style="bottom:4px;position:relative;" target="_blank"></a></div></li>
-            <!--<li><div class="iconWrapper"><a href="atom.xml" class="social-icon rss-gray" style="bottom:1px;position:relative;" target="_blank"></a></div></li>-->
+    <div class="wrapper center">
+      <div class="vertical-center-parent">
+        <h1 class="header-ae">æ</h1>
+        <ul class="basic-link-list">
+          <li><div class="basic-link-wrapper"><a href="https://github.com/alexanderscott" class="basic-link">github</a></div></li>
+          <li><div class="basic-link-wrapper"><a href="https://linkedin.com/in/alexehrnschwender" class="basic-link">linkedin</a></div></li>
+          <li><div class="basic-link-wrapper"><a href="https://soundcloud.com/ehrndog" class="basic-link">soundcloud</a></div></li>
+          <li><div class="basic-link-wrapper"><a href="https://assets.ehrns.com/resumes/ASE-resume-2017.pdf" class="basic-link">résumé</a></div></li>
         </ul>
-      </header>
-      
-      
-      <section id="contentEl">
-        
-      </section>
+        <!--<ul id="socialIconSet center">-->
+            <!--<li><div class="iconWrapper"><a href="http://github.com/alexanderscott" class="social-icon github-gray" target="_blank"></a></div></li>-->
+            <!--<li><div class="iconWrapper"><a href="http://twitter.com/ehrndog" class="social-icon twitter-gray" target="_blank"></a></div></li>-->
+            <!--<li><div class="iconWrapper" style="margin-left:10px;"><a href="http://www.linkedin.com/in/alexehrnschwender" class="social-icon linkedin-gray" style="bottom:4px;position:relative;" target="_blank"></a></div></li>-->
+            <!--[><li><div class="iconWrapper"><a href="atom.xml" class="social-icon rss-gray" style="bottom:1px;position:relative;" target="_blank"></a></div></li><]-->
+            <!--<li><a href="https://assets.ehrns.com/resumes/ASE-resume-2017.pdf" target="_blank">Résumé</a></li>-->
+        <!--</ul>-->
+      </div>
        
-       
-       
-      <aside id="sideNavEl">
-        <nav>
-            <ul>
-                <!--<li>-->
-                    <!--a id="aboutBtn" class="navLink" href="about.html">About</a-->
-                <!--</li>-->
-                <li>
-                    <a id="archiveBtn" class="navLink" href="archive.html">Archive</a>
-                </li>
-                <li>
-                    <a id="projectsBtn" class="navLink" href="projects.html">Projects</a>
-                </li>
-                <li>
-                    <a href="https://assets.ehrns.com/resumes/ASE-resume-2017.pdf" target="_blank">Résumé</a>
-                </li>
-            </ul>
-        </nav>
-      </aside>
       
-      <footer id="footerEl">
-        <p><small>&copy; 2017</small></p>
-     </footer>
+      <footer id="footerEl" class="center">
+        <p><small>&copy; 2017 Alex Ehrnschwender</small></p>
+     </footer
       
     </div>
-    <script>
-
-        $(document).ready(function(){
-            //$('.wrapper').addClass('nav-center');
-
-            $('#contentEl').load('/archive.html');
-
-            $('.navLink').on('click', function(evt){
-
-                // Center the main nav when on home screen
-                //if($(evt.target).closest('a').attr('href') === "/home.html"){ 
-
-                    //$('.wrapper').addClass('nav-center');
-                    //$('#contentEl').hide();
-                    //return false;
-                //} else { 
-                    $('.wrapper').removeClass('nav-center');
-                    $('#contentEl').show();
-                        
-                    // Load the html file in clicked hyperlink
-                    $('#contentEl').load($(evt.target).attr('href'));
-                    return false;
-                //}
-            });
-
-
-
-            var hasPushState = !!(window.history && history.pushState);
-            if(hasPushState){
-                // update the URL
-            } else {
-                // do nothing to URL...
-            }
-
-        });
-
-    </script>
     
     <script src="js/scale.fix.js"></script>
     
