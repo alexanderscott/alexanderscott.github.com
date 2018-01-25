@@ -1,0 +1,157 @@
+<p>Below are some general guidelines and best practices for JS, HTML, and CSS. Many were gathered from experience and lessons learned (often the hard way). The rest will help ensure consistency throughout your web app.</p>
+
+<!--more-->
+
+<h2 id="general-front-end">GENERAL FRONT-END</h2>
+
+<ul>
+  <li>
+    <p><strong>Naming conventions</strong></p>
+
+    <ul>
+      <li>Files which represent ‘classes’ or modules should have first-letter capitalization
+        <ul>
+          <li><em>ex/  </em><code class="highlighter-rouge">ActivityCollection</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Referenced libraries should also have first-letter capitalization, except for those with symbolic representations like jQuery ($) and Underscore (_)</p>
+  </li>
+  <li>
+    <p>As variables can be functions and vice versa, these should both have first-letter capitalization except for the initial letter</p>
+
+    <ul>
+      <li><em>ex/  </em><code class="highlighter-rouge">collectActivity</code></li>
+    </ul>
+  </li>
+  <li><strong>Semicolons</strong> – please <strong>use them</strong> where possible.  Not using semicolons can cause problems with minification.  I’m serious, look it up.</li>
+  <li>
+    <p><strong>DOM</strong></p>
+
+    <ul>
+      <li>HTML id tags should be <strong>globally unique </strong>and contain some indication of the element type (
+        <ul>
+          <li><em>ex/  </em><code class="highlighter-rouge">&lt;button id="activateBtn"&gt;</code></li>
+        </ul>
+      </li>
+      <li>HTML classes can be used for efficient CSS styling when applied to multiple elements.  This is often a better option than CSS id references.</li>
+      <li>Reference element IDs instead of classes in jQuery selectors when possible.  It’s faster.</li>
+      <li>Scope the jQuery selector inside $el views and where applicable
+        <ul>
+          <li><em>ex/  </em><code class="highlighter-rouge">this.$("#activateBtn").toggle();</code></li>
+        </ul>
+      </li>
+      <li>Separate out and defer DOM manipulation functions.  These can be deferred using the jQuery wrapper, <code class="highlighter-rouge">\_.defer()</code>, <code class="highlighter-rouge">$.promise()</code>, etc.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Avoid polluting the global namespace</strong></p>
+
+    <ul>
+      <li>
+        <p>Local variables (variables inside functions used only in that function) should be initialized with var and use ‘new’</p>
+
+        <ul>
+          <li><em>ex/  </em><code class="highlighter-rouge">var myVar = new MyObject()</code></li>
+        </ul>
+      </li>
+      <li>
+        <p>Make JS functions <strong>first-class citizens</strong> where possible.  Use function <strong>parameters </strong>for passing in variables instead of the parent scope.</p>
+
+        <p><code class="highlighter-rouge">function subtractDates(date1, date2){ var newDate = date1 - date2; return newDate; }</code></p>
+
+        <p><em>vs.</em></p>
+
+        <p><code class="highlighter-rouge">var date1; var date2; function subtractDates(){ return date1 - date 2 }</code></p>
+      </li>
+      <li>
+        <p>Garbage-collect views, models, etc. when no longer needed.  This is especially important in Backbone, and forgetting to destroy these can create ‘ghosts’</p>
+      </li>
+      <li>
+        <p>Reference _this_wherever beneficial.  In AJAX there are tricks for doing so:</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">var self = this; $.ajax({ url: 'ajax/test.html', success: function(data) { $('#result').html(data); self.addToLog('Load was performed.'); } });</code></p>
+
+<ul>
+  <li>
+    <p>Practice <strong>asynchronous code </strong>with callbacks&lt;/p&gt;</p>
+
+    <ul>
+      <li>In JS, these are achieved by using a function parameter.</li>
+      <li>
+        <p>Include options parameter with success or error attributes in the callback (think of AJAX calls)</p>
+
+        <ul>
+          <li><em>ex/</em>  <code class="highlighter-rouge">function getSomeData(id, callback){  ... some time-intensive asyc method with callback(result); inside...  };</code></li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Commenting</strong></p>
+
+        <ul>
+          <li>Own your work – include your name and email in JS file headers, along with date created and a short description.  Even if you only wrote a small portion, you have some working knowledge of its contents if ever there is a problem.  See files in client dir for reference.</li>
+          <li>Functions/variables should be prepended with a short // comment if you think they might be confusing to others or do something funky (all comments are removed during minification anyway, so go wild)</li>
+          <li>Use <code class="highlighter-rouge">//TODO</code> for writing future tasks to yourself or others</li>
+          <li>Remove all HTML commenting before build</li>
+        </ul>
+      </li>
+      <li><strong>Double vs Single Quotes</strong>
+        <ul>
+          <li>HTML element attributes, including those inlined in JS and jQuery selectors, should all be quotations.  This will help prevent escaping and separate from the below:</li>
+          <li>JS string literals should be in single quotes
+            <ul>
+              <li><em>ex/</em> <code class="highlighter-rouge">var name = 'Alex'</code></li>
+              <li><em>ex/</em> <code class="highlighter-rouge">html += '&lt;div&gt;';</code></li>
+              <li>JSON must have double-quotes (you prob already knew this)</li>
+              <li><strong>Remove all logs to console</strong> prior to build – as well as all other debugging code * <strong>Code Re-Use/Referencing</strong> * Follow the DRY (<strong>Don’t Repeat Yourself</strong>) principle</li>
+              <li>Instead of copying and pasting commonly used functions, create a first-class function for them and reference the hell out of it.</li>
+              <li>Important for HTML/DOM:  Separate out into templates which can be re-used by JS views.  HTML cannot be properly minified.</li>
+              <li>Native JS functions are often slow and error-prone.  Use better performing functions if already including a function library such as jQuery or Underscore</li>
+              <li><em>ex/</em> <code class="highlighter-rouge">$.each()</code> for an Array or <code class="highlighter-rouge">\_.each()</code> for a Collection instead of <code class="highlighter-rouge">for(i = 0; i &lt; blah; i++)</code></li>
+              <li><em>ex/</em> <code class="highlighter-rouge">\_.isUndefined(myVar)</code> instead of <code class="highlighter-rouge">if(myVar == undefined)</code> or <code class="highlighter-rouge">if(myVar.length)</code></li>
+              <li><strong>Read the source</strong> before including <strong>any</strong> JS plugins.  This will help you understand how to use it, whether to use it if its bloated, make you write better code, and prevent crappy code from entering the codebase. * Source libraries should not reside in the same directory as non-source.  <strong>Avoid editing the source</strong> of mature libs, except for removing unneeded &amp; self-contained plugins.  <strong>Override or extend</strong> source functions locally in the project if need-be, its a much safer alternative.</li>
+              <li><strong>Length/Size</strong> * Views should not be over 500 lines of code.  Anything beyond that becomes cumbersome, and shouldn’t be loaded all at once for reasons of speed and error-catching</li>
+              <li>Lines of code shouldn’t be longer than a normal editor full-screen.  This can be seen often when including inline HTML in long strings.  Do everyone the favor of separating-out the string and concatenate where it makes sense with + or a comma * Use switch (case) statements instead of long or nested if()s.</li>
+              <li>
+                <p>Move/remove unused files from the team working directory.  One way to achieve this is with a .gitignore’d sandbox folder.&lt;/p&gt; 
+ &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;</p>
+
+                <h2 id="backbonejs--requirejs-specific">BACKBONE.JS , REQUIRE.JS SPECIFIC</h2>
+
+                <ul>
+                  <li>Data should ideally not be extracted from the DOM.  The binding should be one-way for the most part (with the exception of forms/input data and event triggers)</li>
+                  <li>Each individual view, model, collection, router, etc. should have its own require module (thus <strong>its own file</strong>).  This is a requirement (no pun intended) of Require and r.js optimization</li>
+                  <li>Use the prototyped eventAggregator sparingly when it’s necessary to trigger events between views (its an app global)</li>
+                  <li>Validation logic should reside in the Model or Collection instead of the View layer.  A view can then ask its model/collection to return validity.  Safer, more consistent, and DRY.</li>
+                  <li>Any external libraries or plugins included must have a path defined in the main.js require config file (must also be shim’ed if it isn’t AMD-friendly).</li>
+                </ul>
+
+                <h2 id="nodejs-specific">NODE.JS SPECIFIC</h2>
+
+                <ul>
+                  <li>Create an npm package.json file for every node module (project).</li>
+                  <li>Include name, version, dependencies, engines, and contributors (see existing for reference</li>
+                  <li>Dependencies for published node modules can be added to package.json upon install by using the <code class="highlighter-rouge">--save</code> argument</li>
+                  <li>Maintained package.json enables installation locally or on a remote server by simply run <code class="highlighter-rouge">$ npm install</code>from project root (‘node_modules’ should be .gitignore’d)</li>
+                  <li>If global module used, link locally</li>
+                  <li>Do not write description comments in headers – this should be included in a README.md inside project root along with runtime instructions</li>
+                  <li>Determine series/parallel/waterfall needs of processes and code accordingly (async module is particularly helpful for this)</li>
+                  <li>Use monitor (CLI) or forever-monitor (programatically) if the node server is required to always be running</li>
+                  <li>Include a logs directory and append error callback data to file</li>
+                  <li>Reference <code class="highlighter-rouge">__dirname</code> and relative paths for scalability</li>
+                  <li>Use buffers for small amounts of data to be returned all at once (such as status messages).  Use streams for larger data – tapping into stdout and stderr and use out-of-the-box pipes for stdin to stdout</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

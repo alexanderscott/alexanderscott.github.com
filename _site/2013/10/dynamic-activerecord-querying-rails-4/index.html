@@ -1,0 +1,198 @@
+<p>One of my biggest frustrations with ActiveRecord and many other ORMs (looking at you, <a href="https://github.com/dresende/node-orm2" target="_blank">node-orm2</a>) is the lack of a solid query builder to join various, dynamic query filters into a single  SQL statement.  It seems obvious that this should be the meat-and-potatoes of the entire query language abstraction framework, and yet there is still no clean way to build a SQL statement containing a variable combination of attribute filters.  Below we’ll examine some different functional (yet still ugly) techniques for doing so.</p>
+
+<!--more-->
+
+<p>Imagine for a second you are building an app to best match prospective guitar players with the guitar of their dreams.  To do so, you build a slick web interface with a large number of filter inputs for future rockers to drill-down based on what they deem important, and want to return a ranked list of guitars matching this criteria.  You begin by defining a basic schema (oversimplified for our purposes) and writing the migrations.</p>
+
+<pre class="lang:ruby decode:true" title="Guitars table migration">class CreateGuitars &lt; ActiveRecord::Migration
+  def change
+    create_table "guitars" do |t|
+      t.string "type", :null =&gt; false               # Guitar, Banjo, Bass Guitar, Ukelele, etc
+      t.string "make", :null =&gt; false               # Gibson, Fender, PRS, etc
+      t.string "model", :null =&gt; false              # SG, Stratocaster, Flying-V, etc
+      t.string "color"                              # Hot-rod Red, Lightning Blue
+      t.integer "price", :null =&gt; false
+      t.integer "year", :null =&gt; false
+      t.boolean "used", :default =&gt; false
+      t.timestamps
+    end
+  end
+end</pre>
+
+<p> </p>
+
+<pre class="lang:ruby decode:true" title="Merchants table migration">class CreateMerchants &lt; ActiveRecord::Migration
+  def change
+    create_table "merchants" do |t|
+      t.string "name", :null =&gt; false
+      t.string "city", :null =&gt; false
+      t.string "state"
+      t.string "email"
+      t.string "phone"
+    end
+  end
+end</pre>
+
+<p> </p>
+
+<p>After gathering and inserting a substantial amount of guitar inventory &amp; spec data from Guitar Center and local pawn shops, you begin drafting the API.  Rock enthusiasts should be able to filter on all guitar model attributes, though they may only choose to filter on one or two.  Seems easy, right?  This brings us to Ugly Solution #1:</p>
+
+<pre class="lang:default decode:true" title="Ugly Solution #1 - a whole bunch of conditionals">@guitars = Guitar.limit(25).includes( [:merchants] ).order( "#{params[:order] || 'price'} #{params[:sort] || 'DESC'}" )
+
+@guitars = @guitars.where('type', params[:type]) if params[:type]
+@guitars = @guitars.where('make', params[:make]) if params[:make]
+@guitars = @guitars.where('model', params[:model]) if params[:model]
+@guitars = @guitars.where('color', params[:color]) if params[:color]
+@guitars = @guitars.where('price &lt; ?', params[:price]) if params[:price]
+@guitars = @guitars.where('merchants.city', params[:city]) if params[:city]
+
+render :json =&gt; @guitars.as_json(:include =&gt; :merchants )</pre>
+
+<p>ActiveRecord evaluates each lazily, so the query will not execute until it is fully built and returned.  That means @guitars will contain the proper runtime clause, though it is rather annoying to have to write the same overriding logic to sub-select and drill into the query.  And the lazy evaluation isn’t all that intuitive.  So let’s try writing a key-value abstraction function to join parameters with their filter attribute.</p>
+
+<pre class="lang:default decode:true" title="Ugly Solution 2 - key abstraction and injection">filters = [:type, :make, :model, :color]
+wheres = filters.map{|key| params.has_key?(key) ? {key =&gt; params[key]} : {} }
+                .inject({}){|hash, injected| hash.merge!(injected)}
+
+@guitars = Guitar.where(wheres).limit(25)
+render :json =&gt; @guitars.as_json(:include =&gt; :merchants )</pre>
+
+<p> </p>
+
+<p>Sure does look prettier, and way less code.  But what about the price and merchant city filter?  These cannot be achieved with the simple hash matching above.  Well crap.  Let’s try that again, this time building the SQL query a bit more manually.</p>
+
+<p> </p>
+
+<pre class="lang:ruby decode:true" title="Ugly Solution 3 - query building thru array aggregation">conditions = String.new
+    wheres = Array.new
+
+    if params.has_key?(:type)
+      conditions &lt;&lt; " AND " unless conditions.length == 0
+      conditions &lt;&lt; "type = ?"
+      wheres &lt;&lt; params[:type]
+    end
+    if params.has_key?(:make)
+      conditions &lt;&lt; " AND " unless conditions.length == 0
+      conditions &lt;&lt; "make = ?"
+      wheres &lt;&lt; params[:make]
+    end
+    if params.has_key?(:model)
+      conditions &lt;&lt; " AND " unless conditions.length == 0
+      conditions &lt;&lt; "model = ?"
+      wheres &lt;&lt; params[:model]
+    end
+    if params.has_key?(:color)
+      conditions &lt;&lt; " AND " unless conditions.length == 0
+      conditions &lt;&lt; "color = ?"
+      wheres &lt;&lt; params[:color]
+    end
+    if params.has_key?(:price)
+      conditions &lt;&lt; " AND " unless conditions.length == 0
+      conditions &lt;&lt; "price &lt; ?"
+      wheres &lt;&lt; params[:price]
+    end
+    if params.has_key?(:city)
+      conditions &lt;&lt; " AND " unless conditions.length == 0
+      conditions &lt;&lt; "merchants.city = ?"
+      wheres &lt;&lt; params[:city]
+    end
+
+    wheres.insert(0, conditions)
+
+    @guitars = Guitar.includes( [:merchants] ).where( wheres )
+                     .order( "#{params[:sort] or 'price'} #{params[:order] or 'DESC'}" ).limit( 25 )
+
+    render :json =&gt; @guitars.as_json(:include =&gt; :merchants )</pre>
+
+<p>The DRY in you hates all of the copy-paste.  It gets the job done, but what if we want to add new filterable attributes down the road (things like neck shape, fret count, pickup style, etc)?  Using the above convention thats +5 lines of code for every filterable attribute!  And it sits in the API controller layer which is supposed to be thin!  OK, fine.  Let’s sober up and try that again.  Time to consult the rails guides and refactor this using model scopes, their recommended way of handling this kind of dynamic chaining.</p>
+
+<p> </p>
+
+<pre class="lang:default decode:true" title="Ugly Solution #4 - individually chained scopes"># Model
+class Guitar &lt; ActiveRecord::Base
+  scope :by_type, lambda { |type|
+    return scoped unless type.present?
+    where(:type =&gt; type)
+  }
+
+  scope :by_color, lambda { |color|
+    return scoped unless color.present?
+    where(:color =&gt; color)
+  }
+
+  scope :by_make, lambda { |make|
+    return scoped unless make.present?
+    where(:make =&gt; make)
+  }
+
+  scope :by_model, lambda { |model|
+    return scoped unless model.present?
+    where(:model =&gt; model)
+  }
+  scope :by_price, lambda { |price|
+    return scoped unless price.present?
+    where("price &lt; ?", price)
+  }
+  scope :by_city, lambda { |city|
+    return scoped unless city.present?
+    where("merchants.city = ?", city)
+  }
+end
+
+# Controller
+class GuitarsController &lt; ApplicationController
+  def index
+    @guitars = Guitar.includes( [:merchants] )
+                     .by_type( params[:type] ).by_color( params[:color] ).by_make( params[:make] )
+                     .by_model( params[:model] ).by_price( params[:price] ).by_city( params[:city] )
+                     .order( order ).limit( limit )
+
+    render :json =&gt; @guitars.as_json(:include =&gt; :merchants )
+  end
+end</pre>
+
+<p>Or using class methods:</p>
+
+<pre class="lang:ruby decode:true" title="Ugly Solution #4 - individually chained scopes"># Model
+class Guitar &lt; ActiveRecord::Base
+
+  def self.by_type(type)
+    return scoped unless type.present?
+    where(:type =&gt; type)
+  end
+  def self.by_color(color)
+    return scoped unless color.present?
+    where(:color =&gt; color)
+  end
+  def self.by_make(make)
+    return scoped unless make.present?
+    where(:make =&gt; make)
+  end
+  def self.by_model(model)
+    return scoped unless model.present?
+    where(:model =&gt; model)
+  end
+  def self.by_price(price)
+    return scoped unless price.present?
+    where("price &lt; ?", price)
+  end
+  def self.by_city(city)
+    return scoped unless city.present?
+    where("merchants.city = ?", city)
+  end
+
+end
+
+# Controller
+class GuitarsController &lt; ApplicationController
+  def index
+    @guitars = Guitar.includes( [:merchants] )
+                     .by_type( params[:type] ).by_color( params[:color] ).by_make( params[:make] )
+                     .by_model( params[:model] ).by_price( params[:price] ).by_city( params[:city] )
+                     .order( order ).limit( limit )
+
+    render :json =&gt; @guitars.as_json(:include =&gt; :merchants )
+  end
+end</pre>
+
+<p>Really, Rails?  We can’t group filters inside a scope without knowing beforehand which filters a rocker will select.  As these filters are each independent of each other (except for maybe ‘make’ and ‘model’), we need to create a separate model scope for each.  So for each new filterable attribute, we need to switch between model and controller to create the scope and call it.  This is not only annoying, it is hardly maintainable.  Yet this is the recommended way of chaining WHERE clauses – a very common use case.  Am I missing something?  Hopefully.  Comments appreciated.</p>

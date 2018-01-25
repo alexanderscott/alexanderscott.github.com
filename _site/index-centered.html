@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Alex's Blog &amp; Project Porfolio</title>
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <div class="wrapper content center">
+      <!--<header id="headerEl">-->
+      <!--<div class="content center-absolute">-->
+
+      <a href="/"><h2>Alex Ehrnschwender</h2></a>
+        <p class="subtext">Software engineer, lifelong music nut.</p>
+        <ul id="socialIconSet">
+            <li><div class="iconWrapper"><a href="http://github.com/alexanderscott" class="social-icon github-gray" target="_blank"></a></div></li>
+            <li><div class="iconWrapper"><a href="http://twitter.com/ehrndog" class="social-icon twitter-gray" target="_blank"></a></div></li>
+            <li><div class="iconWrapper"><a href="http://www.linkedin.com/in/alexehrnschwender" class="social-icon linkedin-gray" style="bottom:4px;position:relative;" target="_blank"></a></div></li>
+            <li><div class="iconWrapper"><a href="atom.xml" class="social-icon rss-gray" style="bottom:1px;position:relative;" target="_blank"></a></div></li>
+        </ul>
+      <!--</header>-->
+      
+      
+      <!--<section id="contentEl">-->
+        
+      <!--</section>-->
+       
+       
+       
+      <!--<aside id="sideNavEl">-->
+        <nav>
+            <ul class="navList">
+                <li>
+                    <a id="aboutBtn" class="navLink" href="about.html">About</a>
+                </li>
+                <li>
+                    <a id="archiveBtn" class="navLink" href="archive.html">Blog</a>
+                </li>
+                <li>
+                    <a id="projectsBtn" class="navLink" href="projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="assets/ASE-resume.pdf" target="_blank">Résumé</a>
+                </li>
+            </ul>
+        </nav>
+      <!--</aside>-->
+      
+      <footer id="footerEl">
+        <p><small>&copy; 2012</small></p>
+     </footer>
+      
+    </div>
+    <script>
+        $('.navLink').on('click', function(evt){
+            $('#contentEl').load($(evt.target).attr('href'));
+            return false;
+        });
+            
+        $('#archiveBtn').on('click', function(evt){
+            
+            $('#contentEl').load('archive.html', function(){ });
+            return false;
+        });
+    </script>
+    
+    <script src="js/scale.fix.js"></script>
+    
+     <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37135282-2']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+    
+  </body>
+</html>
