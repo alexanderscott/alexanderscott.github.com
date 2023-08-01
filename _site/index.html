@@ -1,125 +1,67 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="author" content="Alex Ehrnschwender">
-    <meta name="description" content="Alex's blog and project portfolio">
-    <meta name="keywords" 
-        content="Alex Ehrnschwender, Ehrnschwender, 
-                software, music, engineering, javascript,
-                Slice Is Right, Music To Lose It, Musictolose.it, cloudjams, tabhammer, alexanderscott">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="author" content="Alex Ehrnschwender">
+        <meta name="description" content="Alex's blog and project portfolio">
+        <meta name="keywords"
+              content="Alex Ehrnschwender, Ehrnschwender, ehrndog, ehrns, alexanderscott, software, music, engineering, javascript, Slice Is Right, Music To Lose It, Musictolose.it, cloudjams, tabhammer">
 
-    <title>Blog &amp; Project Porfolio</title>
-    
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <!--<script src="/assets/libs/jquery/jquery.js"></script>-->
-    
-  </head>
-  <body>
-    <div class="wrapper">
-      <header id="headerEl">
-      <a class="navLink" href="/home.html"><h2>Alex Ehrnschwender</h2></a>
-        <p>software engineer & music geek</p>
-        <ul id="socialIconSet">
-            <li><div class="iconWrapper"><a href="http://github.com/alexanderscott" class="social-icon github-gray" target="_blank"></a></div></li>
-            <li><div class="iconWrapper"><a href="http://twitter.com/ehrndog" class="social-icon twitter-gray" target="_blank"></a></div></li>
-            <li><div class="iconWrapper" style="margin-left:10px;"><a href="http://www.linkedin.com/in/alexehrnschwender" class="social-icon linkedin-gray" style="bottom:4px;position:relative;" target="_blank"></a></div></li>
-            <!--<li><div class="iconWrapper"><a href="atom.xml" class="social-icon rss-gray" style="bottom:1px;position:relative;" target="_blank"></a></div></li>-->
-        </ul>
-      </header>
-      
-      
-      <section id="contentEl">
-        
-      </section>
-       
-       
-       
-      <aside id="sideNavEl">
-        <nav>
-            <ul>
-                <!--<li>-->
-                    <!--a id="aboutBtn" class="navLink" href="about.html">About</a-->
-                <!--</li>-->
-                <li>
-                    <a id="archiveBtn" class="navLink" href="archive.html">Archive</a>
-                </li>
-                <li>
-                    <a id="projectsBtn" class="navLink" href="projects.html">Projects</a>
-                </li>
-                <li>
-                    <a href="https://assets.ehrns.com/resumes/ASE-resume-2017.pdf" target="_blank">Résumé</a>
-                </li>
-            </ul>
-        </nav>
-      </aside>
-      
-      <footer id="footerEl">
-        <p><small>&copy; 2017</small></p>
-     </footer>
-      
-    </div>
-    <script>
+        <title>Alex Ehrnschwender</title>
 
-        $(document).ready(function(){
-            //$('.wrapper').addClass('nav-center');
+        <link rel="stylesheet" href="assets/css/styles-basic-static.css?v=20190226">
+        <!--link rel="stylesheet" href="assets/css/pygment_trac.css"-->
+        <link href="https://fonts.googleapis.com/css?family=Unna:400,400i,700" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-            $('#contentEl').load('/archive.html');
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <!--<script src="/assets/libs/jquery/jquery.js"></script>-->
 
-            $('.navLink').on('click', function(evt){
-
-                // Center the main nav when on home screen
-                //if($(evt.target).closest('a').attr('href') === "/home.html"){ 
-
-                    //$('.wrapper').addClass('nav-center');
-                    //$('#contentEl').hide();
-                    //return false;
-                //} else { 
-                    $('.wrapper').removeClass('nav-center');
-                    $('#contentEl').show();
-                        
-                    // Load the html file in clicked hyperlink
-                    $('#contentEl').load($(evt.target).attr('href'));
-                    return false;
-                //}
-            });
+    </head>
+    <body>
+        <div class="wrapper center">
+            <div class="vertical-center-parent">
+                <h1 class="header-ae">æ</h1>
+                <ul class="basic-link-list">
+                    <li><div class="basic-link-wrapper"><a href="https://github.com/alexanderscott" class="basic-link">github</a></div></li>
+                    <li><div class="basic-link-wrapper"><a href="https://linkedin.com/in/alexehrnschwender" class="basic-link">linkedin</a></div></li>
+                    <li><div class="basic-link-wrapper"><a href="https://soundcloud.com/ehrndog" class="basic-link">soundcloud</a></div></li>
+                    <li><div class="basic-link-wrapper"><a href="https://assets.ehrns.com/resumes/ASE-resume-2023-06.pdf" class="basic-link">resume</a></div></li>
+                </ul>
+                <!--<ul id="socialIconSet center">-->
+                <!--<li><div class="iconWrapper"><a href="http://github.com/alexanderscott" class="social-icon github-gray" target="_blank"></a></div></li>-->
+                <!--<li><div class="iconWrapper"><a href="http://twitter.com/ehrndog" class="social-icon twitter-gray" target="_blank"></a></div></li>-->
+                <!--<li><div class="iconWrapper" style="margin-left:10px;"><a href="http://www.linkedin.com/in/alexehrnschwender" class="social-icon linkedin-gray" style="bottom:4px;position:relative;" target="_blank"></a></div></li>-->
+                <!--[><li><div class="iconWrapper"><a href="atom.xml" class="social-icon rss-gray" style="bottom:1px;position:relative;" target="_blank"></a></div></li><]-->
+                <!--<li><a href="https://assets.ehrns.com/resumes/ASE-resume-2017.pdf" target="_blank">Résumé</a></li>-->
+                <!--</ul>-->
+            </div>
 
 
+            <footer id="footerEl" class="center">
+                <p><span>&copy; <script>document.write(new Date().getFullYear())</script> Alex Ehrnschwender</span></p>
+            </footer>
+        </div>
 
-            var hasPushState = !!(window.history && history.pushState);
-            if(hasPushState){
-                // update the URL
-            } else {
-                // do nothing to URL...
-            }
+        <script src="js/scale.fix.js"></script>
 
-        });
+        <script type="text/javascript">
 
-    </script>
-    
-    <script src="js/scale.fix.js"></script>
-    
-     <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-37135282-2']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    
-    </script>
-    
-  </body>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-37135282-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+
+    </body>
 </html>

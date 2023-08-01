@@ -471,6 +471,16 @@ article footer p.gotop {
   header ul {
     display:none;
   }
+  .header-ae {
+      font-size: 200px;
+  }
+  .basic-link-list {
+      margin-top: 50px;
+      margin-left: 30px;
+  }
+  .basic-link {
+      font-size: 24px;
+  }
 }
 
 @media print {
@@ -482,4 +492,5 @@ article footer p.gotop {
 }
 
 .mb20 { margin-bottom:20px; }
+
 
