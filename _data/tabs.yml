@@ -1,0 +1,35 @@
+#  The tab data.
+#  v2.1
+#  https://github.com/cotes2020/jekyll-theme-chirpy
+#  © 2020 Cotes Chung
+#  MIT Licensed
+
+
+-
+  name: Home
+  icon: "fas fa-home"
+-
+  name: "Tags"
+  icon: "fas fa-tags"
+  path: tabs
+  url: tags
+-
+  name: "Archives"
+  path: tabs
+  url: archives
+  icon: "fas fa-archive"
+-
+  name: "Speaking"
+  icon: "fas fa-microphone"
+  path: tabs
+  url: speaking
+-
+  name: "DevOps Book"
+  icon: "fas fa-book"
+  path: tabs
+  url: book
+-
+  name: "About"
+  icon: "fas fa-info"
+  path: tabs
+  url: about
