@@ -58,7 +58,8 @@ jekyll_analytics:
     source: 'https://plausible.io/js/plausible.js' # The source of the javascript
 
 #google_analytics: 'G-392396831'
-google_analytics: 'G-X04LZWHF9E'
+google_analytics: 'G-YSC8YZSFGF'
+#google_analytics: 'G-X04LZWHF9E'
   # id: 'UA-37135282-2'
    # The Google Analytics pageviews switch.
 #
