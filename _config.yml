@@ -20,7 +20,8 @@ url: 'https://ehrns.com'
 
 author: Alex Ehrnschwender                  # change to your full name
 
-avatar: /images/Logo-C.png   # support internet resources
+avatar: /images/hokusai-waves-circle.png
+# avatar: alex-meta-avatar-profile.png
 
 plugins:
   - jekyll-analytics
