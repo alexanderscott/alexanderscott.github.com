@@ -19,15 +19,10 @@
   url: archives
   icon: "fas fa-archive"
 -
-  name: "Speaking"
-  icon: "fas fa-microphone"
+  name: "Projects"
+  icon: "fas fa-folders"
   path: tabs
-  url: speaking
--
-  name: "DevOps Book"
-  icon: "fas fa-book"
-  path: tabs
-  url: book
+  url: projects
 -
   name: "About"
   icon: "fas fa-info"

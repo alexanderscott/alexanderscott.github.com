@@ -42,7 +42,7 @@ social:
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/alexehrnschwender
 
-google_site_verification: google_meta_tag_verification # change to your verification string
+#google_site_verification: google_meta_tag_verification # change to your verification string
 
 #--------------------------
 
@@ -50,15 +50,16 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: America/Los_Angeles
 
 jekyll_analytics:
   Plausible:
     domain: 'ehrns.com'   # The domain configured in plausible
     source: 'https://plausible.io/js/plausible.js' # The source of the javascript
 
-google_analytics:
-  id: 'UA-37135282-2'
+#google_analytics: 'G-392396831'
+google_analytics: 'G-X04LZWHF9E'
+  # id: 'UA-37135282-2'
    # The Google Analytics pageviews switch.
 #
 #   pv:
