@@ -12,7 +12,8 @@ tags: []
 
 
 ## Schematic
-![RoboGrow breadboard](../images/robogrow-breadboard.png)
+![RoboGrow breadboard](../images/robogrow-breadboard.jpg)
+
 ![RoboGrow schematic](../images/robogrow-fritzing.png)
 
 ## Code
@@ -20,7 +21,7 @@ https://gist.github.com/alexanderscott/f5df9a37fcbabdb4e78c
 
 
 ## Images
-![RoboGrow plants](../images/robogrow-plants.png)
+![RoboGrow plants](../images/robogrow-plants.jpg)
 
 
 
